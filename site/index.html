@@ -130,6 +130,8 @@ p{margin:0}
 .entering .ln > span{animation:lineUp 1.05s var(--ease) both}
 .entering .ln:nth-child(2) > span{animation-delay:.12s}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* with motion off, show the end state of animations that start hidden */
+@media (prefers-reduced-motion:reduce){.done svg circle,.done svg path{stroke-dashoffset:0!important}.ticket.sent .stamp{opacity:1!important;transform:translate(50%,-50%) rotate(-14deg) scale(1)!important}}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
 
 /* intro: auto exits by CSS even without script */
@@ -437,18 +439,19 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .legal .upd{font-size:calc(13px * var(--fs));color:var(--mute)}
 .form-note{font-size:calc(13px * var(--fs));color:var(--mute);margin-top:4px}
 .form-note a{color:var(--skin)}
-.a11y{position:fixed;z-index:150;inset-inline-end:max(16px,env(safe-area-inset-left,0px));bottom:calc(env(safe-area-inset-bottom,0px) + 20px);display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.a11y-btn{width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);background:var(--glass-2);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--bone);cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-.a11y-btn svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6}
-.a11y-btn:hover{border-color:var(--skin)}
-.a11y-panel{background:var(--ink-2);color:var(--bone);border:1px solid var(--line-strong);border-radius:14px;padding:16px;width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.tel{white-space:nowrap;unicode-bidi:isolate}
+.a11y{position:relative;flex:none}
+@media (max-width:860px){header.top .a11y{margin-inline-start:auto}}
+.a11y-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line-strong);background:transparent;color:var(--bone);cursor:pointer;display:grid;place-items:center;transition:border-color .3s}
+.a11y-btn svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6}
+.a11y-btn:hover,.a11y-btn[aria-expanded="true"]{border-color:var(--skin)}
+.a11y-panel{position:absolute;top:calc(100% + 10px);inset-inline-end:0;z-index:5;background:var(--ink-2);color:var(--bone);border:1px solid var(--line-strong);border-radius:14px;padding:16px;width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .a11y-panel b{font-weight:600;font-size:calc(15px * var(--fs))}
 .a11y-panel .lbl{font-size:calc(13px * var(--fs));color:var(--mute)}
 .a11y-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .a11y-seg button,.a11y-big{font:inherit;font-size:calc(14px * var(--fs));padding:9px 6px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--bone);cursor:pointer}
 .a11y-seg button[aria-pressed="true"],.a11y-big[aria-pressed="true"]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .a11y-panel a{color:var(--skin);font-size:calc(13.5px * var(--fs))}
-@media (max-width:860px){.a11y{bottom:calc(env(safe-area-inset-bottom,0px) + 88px)}body[data-view="admin"] .a11y{bottom:calc(env(safe-area-inset-bottom,0px) + 20px)}}
 details{border-bottom:1px solid var(--line);padding-block:20px}
 details summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:var(--display);font-weight:var(--dweight);font-size:calc(22px * var(--fs))}
 details summary::-webkit-details-marker{display:none}
@@ -554,6 +557,20 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
       <a href="#studio" data-nav="studio">סטודיו</a>
     </nav>
     <a class="btn sm cta" href="#book">קביעת תור <span class="arr">←</span></a>
+    <div class="a11y" id="a11y" dir="rtl">
+    <button type="button" class="a11y-btn" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" aria-label="תצוגה ונגישות: כתב גדול, מצב בהיר או כהה"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/></svg></button>
+      <div class="a11y-panel" id="a11yPanel" role="group" aria-label="הגדרות תצוגה" hidden>
+        <b>תצוגה</b>
+        <span class="lbl" id="themeLbl">צבעים</span>
+        <div class="a11y-seg" role="group" aria-labelledby="themeLbl">
+          <button type="button" data-theme-set="auto">אוטומטי</button>
+          <button type="button" data-theme-set="light">בהיר</button>
+          <button type="button" data-theme-set="dark">כהה</button>
+        </div>
+        <button type="button" class="a11y-big" id="a11yText" aria-pressed="false">כתב גדול</button>
+        <a href="#accessibility">הצהרת נגישות</a>
+      </div>
+    </div>
   </div></header>
 
   <main>
@@ -720,7 +737,7 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
         <div><h3>למה</h3><p>רק כדי לחזור אליכם, לתאם את התור ולהכין סקיצה. הפרטים לא מועברים לאף אחד אחר ולא משמשים לפרסום.</p></div>
         <div><h3>מה נשמר במכשיר שלכם</h3><p>האתר שומר בדפדפן רק את המועד שבחרתם, כדי להציג אותו כתפוס. השם, הטלפון, הרעיון והתמונה לא נשמרים במכשיר.</p></div>
         <div><h3>עוגיות ומעקב</h3><p>אין באתר עוגיות, אין כלי סטטיסטיקה ואין פיקסלים של פרסום. הגופנים נטענים מ־Google Fonts, ולכן גוגל מקבלת את כתובת ה־IP שלכם כשהדף נטען.</p></div>
-        <div><h3>הזכויות שלכם</h3><p>אפשר לבקש לראות את הפרטים שלכם, לתקן אותם או למחוק אותם. כתבו לעדי בוואטסאפ: <span dir="ltr">050-3630384</span>.</p></div>
+        <div><h3>הזכויות שלכם</h3><p>אפשר לבקש לראות את הפרטים שלכם, לתקן אותם או למחוק אותם. כתבו לעדי בוואטסאפ: <span class="tel" dir="ltr">050-3630384</span>.</p></div>
         <p class="upd">עודכן לאחרונה: נובמבר 2026</p>
       </div>
     </div>
@@ -738,10 +755,10 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
           <li>לתמונות ולכפתורים יש תיאור לקוראי מסך.</li>
           <li>ניגודיות צבעים ברורה בין הטקסט לרקע.</li>
           <li>מי שהגדיר במכשיר "הפחתת תנועה" לא יראה אנימציות.</li>
-          <li>כפתור התצוגה בפינת המסך: כתב גדול, ומצב בהיר או כהה. בלי בחירה, האתר מתאים את עצמו להגדרה של הטלפון.</li>
+          <li>כפתור התצוגה בפינת המסך: כתב גדול, ומצב בהיר או כהה. במצב "אוטומטי" האתר מתאים את עצמו להגדרה של המכשיר.</li>
           <li>אפשר להגדיל את הטקסט בדפדפן בלי לשבור את הדף.</li>
         </ul></div>
-        <div><h3>נתקלתם בבעיה?</h3><p>אם משהו באתר לא נגיש לכם, או שתרצו לקבוע תור בדרך אחרת, כתבו לעדי בוואטסאפ: <span dir="ltr">050-3630384</span>. נחזור אליכם ונתקן.</p></div>
+        <div><h3>נתקלתם בבעיה?</h3><p>אם משהו באתר לא נגיש לכם, או שתרצו לקבוע תור בדרך אחרת, כתבו לעדי בוואטסאפ: <span class="tel" dir="ltr">050-3630384</span>. נחזור אליכם ונתקן.</p></div>
         <p class="upd">ההצהרה עודכנה לאחרונה: נובמבר 2026</p>
       </div>
     </div>
@@ -791,7 +808,7 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
     <div class="big">Adi Strug</div>
     <div class="cols">
       <div><b>וואטסאפ</b><button class="copy" type="button" data-copy="050-3630384">050-3630384</button></div>
-      <div><b>אינסטגרם</b><a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">@adistrug</a></div>
+      <div><b>אינסטגרם</b><a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener" class="tel" dir="ltr">@adistrug</a></div>
       <div><b>סטודיו</b>גבעתיים</div>
       <div><b>מידע</b><a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
       <div><b>ניהול</b><a href="#admin">כניסה</a></div>
@@ -811,20 +828,6 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
   <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""><button class="icon-btn lb-prev" type="button" id="lbPrev" aria-label="הקודם">›</button><button class="icon-btn lb-next" type="button" id="lbNext" aria-label="הבא">‹</button></div>
   <div class="lb-bot"><div><h3 id="lbTitle"></h3><span class="muted" id="lbMeta"></span></div><button class="btn" type="button" id="lbBook">רוצה משהו כזה <span class="arr">←</span></button></div>
 </div>
-<div class="a11y" id="a11y">
-  <div class="a11y-panel" id="a11yPanel" role="group" aria-label="הגדרות תצוגה" hidden>
-    <b>תצוגה</b>
-    <span class="lbl" id="themeLbl">צבעים</span>
-    <div class="a11y-seg" role="group" aria-labelledby="themeLbl">
-      <button type="button" data-theme-set="auto">לפי הטלפון</button>
-      <button type="button" data-theme-set="light">בהיר</button>
-      <button type="button" data-theme-set="dark">כהה</button>
-    </div>
-    <button type="button" class="a11y-big" id="a11yText" aria-pressed="false">כתב גדול</button>
-    <a href="#accessibility">הצהרת נגישות</a>
-  </div>
-  <button type="button" class="a11y-btn" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" aria-label="תצוגה ונגישות: כתב גדול, מצב בהיר או כהה"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/></svg></button>
-</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -841,16 +844,16 @@ const two = n => String(n).padStart(2,'0');
 
 /* ---------- works ---------- */
 const CATS = [['all','הכל'],['botanical','בוטני'],['line','קווים ופלואו'],['animal','חיות'],['symbol','סמלים'],['script','כיתובים'],['red','דיו אדום']];
-const COVERS = {botanical:'013', line:'039', animal:'011', symbol:'023', script:'034', red:'037'};
+const COVERS = {botanical:'013', line:'039', animal:'027', symbol:'023', script:'034', red:'011'};
 const WORKS = [
  ['001','פלואו ושמש','זרוע עליונה','line'],['002','עץ ומאזניים','שוק','symbol'],['011','עוף החול','זרוע','animal red'],
- ['000','מניפות יפניות','זרוע עליונה','botanical red'],['023','הפטיפון של סבא וסבתא','זרוע','symbol'],['015','פרה ואנפה','שוק','animal'],
+ ['000','מניפות יפניות','זרוע עליונה','botanical'],['023','הפטיפון של סבא וסבתא','זרוע','symbol'],['015','פרה ואנפה','שוק','animal'],
  ['039','Soft flow','גב','line'],['008','דגי קוי','שוק','animal'],['013','הפרחים של זהר','זרוע','botanical'],
  ['027','נמר','זרוע','animal'],['012','Spritz O’Clock','זרוע','symbol'],['029','מחלימים','עמוד שדרה','line'],
- ['010','Amore e pomodori','זרוע','botanical red'],['031','שפירית אורנמנטלית','זרוע','animal'],['016','οικογένεια · משפחה','אמה','script'],
- ['037','פרח רפונזל','צלעות','botanical red'],['019','היביסקוס','זרוע','botanical'],['041','פגיון','זרוע','symbol'],
+ ['010','Amore e pomodori','זרוע','botanical'],['031','שפירית אורנמנטלית','זרוע','animal'],['016','οικογένεια · משפחה','אמה','script'],
+ ['037','פרח רפונזל','צלעות','botanical'],['019','היביסקוס','זרוע','botanical'],['041','פגיון','זרוע','symbol'],
  ['053','אור וצמיחה','עמוד שדרה','line'],['034','Leela · लीला','כתף','script'],['006','קעקוע משותף, אמא ובת','זרוע','botanical'],
- ['046','פרח בפלואו','זרוע','line red'],['025','השיר האהוב','צלעות','script'],['048','השמש של סבתא','קרסול','symbol'],
+ ['046','פרח בפלואו','זרוע','line'],['025','השיר האהוב','צלעות','script'],['048','השמש של סבתא','קרסול','symbol'],
  ['007','פרח','זרוע','botanical'],['043','מניפה יפנית','זרוע','symbol'],['045','סקיצה מתכשיט','שוק','botanical'],
  ['003','חתימה','אמה','script'],['049','שפירית קטנה','זרוע','animal'],['035','פלאשים','אמה','symbol'],
  ['047','קטנטנים','כתף','symbol'],['051','Tiny red','זרוע','red'],['040','לפי בקשה','זרוע','symbol']
@@ -1159,7 +1162,7 @@ $('#bookForm').addEventListener('submit', e => {
     <p class="muted">שמרנו עבורך את ${esc(fmtMid(r.date))} בשעה ${r.time}. שלחו את ההודעה לעדי${r.ref ? ' וצרפו את תמונת הרפרנס בצ׳אט' : ''}.</p>
     <div class="msg" id="msgBox">${esc(msg)}</div>
     <div class="acts"><a class="btn wa" href="${waLink(PHONE_INTL, msg)}" target="_blank" rel="noopener">שליחה לעדי בוואטסאפ</a><button class="btn ghost" type="button" id="copyMsg">העתקת ההודעה</button></div>
-    <p class="note">אם הוואטסאפ לא נפתח, העתיקו ושלחו ל־050-3630384. <button class="copy" type="button" id="newReq">בקשה חדשה</button></p>`;
+    <p class="note">אם הוואטסאפ לא נפתח, העתיקו ושלחו ל־<span class="tel" dir="ltr">050-3630384</span>. <button class="copy" type="button" id="newReq">בקשה חדשה</button></p>`;
   stepN = 3; goStep(4); $('#ticket').classList.add('sent');
   $('#copyMsg').onclick = () => navigator.clipboard ? navigator.clipboard.writeText(msg).then(() => toast('ההודעה הועתקה'), () => selectText($('#msgBox'))) : selectText($('#msgBox'));
   $('#newReq').onclick = resetBooking;
