@@ -15,3 +15,7 @@ Live: https://adistrug.netlify.app
 `site/_headers` sets standard security headers, including a Content-Security-Policy.
 When the real calendar is added (Firebase), its domains must be added to `connect-src`
 (and `script-src` if its scripts load from a CDN), or the calendar will be blocked.
+
+## This repository is public
+It is public so Netlify's free plan builds previews for every change. Never commit
+passwords, private keys, customer details or anything else that should stay private.
