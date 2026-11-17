@@ -349,6 +349,9 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .info{display:grid;gap:0;border-top:1px solid var(--line)}
 .info > div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;padding-block:24px;border-bottom:1px solid var(--line)}
 .info h3{font-size:calc(28px * var(--fs-big))}
+.info .pin{display:flex;align-items:center;gap:8px;margin:0;font-size:calc(17px * var(--fs))}
+.info .pin svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5}
+.info .pin-note{margin:4px 0 0;color:var(--mute);font-size:calc(15px * var(--fs))}
 .info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:calc(15.5px * var(--fs))}
 .info dt{color:var(--mute)}
 .info dd{margin:0;font-variant-numeric:tabular-nums}
@@ -577,7 +580,7 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
       <div class="page-head"><div><h2 data-rv>סטודיו</h2></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
       <div class="studio-grid">
         <div class="info" data-rv>
-          <div><h3>איפה</h3><dl><dt>עיר</dt><dd>גבעתיים</dd><dt>כתובת</dt><dd>נשלחת אחרי שריון התור</dd></dl></div>
+          <div><h3>איפה</h3><div><p class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>גבעתיים</p><p class="pin-note">הכתובת תישלח בתיאום התור</p></div></div>
           <div><h3>מתי</h3><dl><dt>ימים</dt><dd>ראשון עד שישי</dd><dt>שעות</dt><dd>בתיאום מולי</dd></dl></div>
           <div><h3>דברו איתי</h3><dl data-contacts-dl></dl></div>
         </div>
