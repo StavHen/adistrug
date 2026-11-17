@@ -294,7 +294,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .day.off{color:rgba(236,228,218,.2);cursor:default}
 .day.full{color:rgba(236,228,218,.32);cursor:default}
 .day.full .dots{display:none}
-.day.full::after{content:"מלא";font-size:9.5px;color:var(--red)}
+.day.full::after{content:"מלא";font-size:9.5px;color:#e59383}
 .day.today{box-shadow:inset 0 -2px 0 var(--line-strong)}
 .day.sel{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .day.sel .dots i{background:var(--ink)}
@@ -385,6 +385,14 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .flash-cap h3{font-size:30px;margin-bottom:8px}
 .flash-cap p{color:var(--bone-2);font-weight:400;margin-bottom:18px;max-width:40ch}
 .faq{max-width:900px;border-top:1px solid var(--line);margin-bottom:80px}
+.legal{max-width:68ch;margin-bottom:80px;display:flex;flex-direction:column;gap:26px}
+.legal h3{font-size:22px;margin-bottom:6px}
+.legal p,.legal li{color:var(--bone-2);font-weight:400}
+.legal ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px}
+.legal a{color:var(--skin)}
+.legal .upd{font-size:13px;color:var(--mute)}
+.form-note{font-size:13px;color:var(--mute);margin-top:4px}
+.form-note a{color:var(--skin)}
 details{border-bottom:1px solid var(--line);padding-block:20px}
 details summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:var(--display);font-weight:var(--dweight);font-size:22px}
 details summary::-webkit-details-marker{display:none}
@@ -604,6 +612,7 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
             </div>
             <label class="check"><input type="checkbox" id="first"> זה הקעקוע הראשון שלי</label>
             <div class="b-nav"><button class="btn ghost" type="button" data-back="2">→ חזרה</button><button class="btn" type="submit">שליחת הבקשה <span class="arr">←</span></button></div>
+            <p class="form-note">הפרטים נשלחים רק לעדי, בהודעת וואטסאפ שאתם שולחים בעצמכם, כדי לתאם את התור. <a href="#privacy">מה קורה עם הפרטים</a></p>
           </form>
 
           <div class="bstep done" data-step="4" id="done" hidden></div>
@@ -641,6 +650,42 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
         <details><summary>אפשר להגיע עם רעיון משלי?</summary><p>בטח. רוב הקעקועים כאן התחילו מרעיון אישי: חתימה של אבא, פטיפון של סבא וסבתא, תכשיט שהפך לסקיצה. ספרו את הסיפור, ועדי תכין סקיצה בהתאם.</p></details>
         <details><summary>זה הקעקוע הראשון שלי. זה בסדר?</summary><p>לגמרי. סמנו בטופס שזה הקעקוע הראשון, ועדי תדע לתת לזה את הזמן והשיחה שצריך.</p></details>
         <details><summary>איך שולחים את תמונת הרפרנס?</summary><p>אחרי השליחה נפתח צ׳אט וואטסאפ עם ההודעה המוכנה. צרפו שם את התמונה כהודעה נוספת.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="view" data-view="privacy" hidden>
+    <div class="wrap">
+      <div class="page-head"><div><span class="eyebrow">Privacy</span><h2>פרטיות</h2></div></div>
+      <div class="legal">
+        <div><h3>מה נאסף</h3><p>כשמבקשים תור: שם, טלפון, תיאור הרעיון, מיקום וגודל משוערים, האם זה קעקוע ראשון, ותמונת רפרנס אם בחרתם לצרף.</p></div>
+        <div><h3>לאן זה הולך</h3><p>לאתר אין שרת ששומר את הפרטים. הם נכנסים להודעת וואטסאפ מוכנה, ואתם שולחים אותה לעדי בעצמכם. מרגע השליחה ההודעה נשמרת בוואטסאפ, אצלכם ואצל עדי. וואטסאפ הוא שירות של חברת Meta.</p></div>
+        <div><h3>למה</h3><p>רק כדי לחזור אליכם, לתאם את התור ולהכין סקיצה. הפרטים לא מועברים לאף אחד אחר ולא משמשים לפרסום.</p></div>
+        <div><h3>מה נשמר במכשיר שלכם</h3><p>האתר שומר בדפדפן רק את המועד שבחרתם, כדי להציג אותו כתפוס. השם, הטלפון, הרעיון והתמונה לא נשמרים במכשיר.</p></div>
+        <div><h3>עוגיות ומעקב</h3><p>אין באתר עוגיות, אין כלי סטטיסטיקה ואין פיקסלים של פרסום. הגופנים נטענים מ־Google Fonts, ולכן גוגל מקבלת את כתובת ה־IP שלכם כשהדף נטען.</p></div>
+        <div><h3>הזכויות שלכם</h3><p>אפשר לבקש לראות את הפרטים שלכם, לתקן אותם או למחוק אותם. כתבו לעדי בוואטסאפ: <span dir="ltr">050-3630384</span>.</p></div>
+        <p class="upd">עודכן לאחרונה: נובמבר 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCESSIBILITY -->
+  <section class="view" data-view="accessibility" hidden>
+    <div class="wrap">
+      <div class="page-head"><div><span class="eyebrow">Accessibility</span><h2>הצהרת נגישות</h2></div></div>
+      <div class="legal">
+        <div><h3>מה עשינו</h3><p>חשוב לנו שכל אחד ואחת יוכלו לקבוע תור בקלות. האתר נבנה לפי הנחיות WCAG 2.0 ברמה AA, שעליהן מבוסס התקן הישראלי 5568.</p></div>
+        <div><h3>מה יש באתר</h3><ul>
+          <li>עברית מימין לשמאל, עם כותרות מסודרות.</li>
+          <li>אפשר לגלוש ולקבוע תור עם מקלדת בלבד, והמיקום של המקלדת מסומן בבירור.</li>
+          <li>לתמונות ולכפתורים יש תיאור לקוראי מסך.</li>
+          <li>ניגודיות צבעים ברורה בין הטקסט לרקע.</li>
+          <li>מי שהגדיר במכשיר "הפחתת תנועה" לא יראה אנימציות.</li>
+          <li>אפשר להגדיל את הטקסט בדפדפן בלי לשבור את הדף.</li>
+        </ul></div>
+        <div><h3>נתקלתם בבעיה?</h3><p>אם משהו באתר לא נגיש לכם, או שתרצו לקבוע תור בדרך אחרת, כתבו לעדי בוואטסאפ: <span dir="ltr">050-3630384</span>. נחזור אליכם ונתקן.</p></div>
+        <p class="upd">ההצהרה עודכנה לאחרונה: נובמבר 2026</p>
       </div>
     </div>
   </section>
@@ -691,6 +736,7 @@ body[data-view="admin"] footer.foot,body[data-view="admin"] header.top,body[data
       <div><b>וואטסאפ</b><button class="copy" type="button" data-copy="050-3630384">050-3630384</button></div>
       <div><b>אינסטגרם</b><a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">@adistrug</a></div>
       <div><b>סטודיו</b>גבעתיים</div>
+      <div><b>מידע</b><a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
       <div><b>ניהול</b><a href="#admin">כניסה</a></div>
     </div>
   </div></footer>
@@ -747,7 +793,7 @@ const inCat = k => {
 const src = w => w.src || `img/${w.id}.jpg`;
 
 /* ---------- router ---------- */
-const VIEWS = ['home','work','book','studio','admin'];
+const VIEWS = ['home','work','book','studio','admin','privacy','accessibility'];
 const cur = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : 'home'; };
 $$('.view').forEach(v => v.querySelectorAll('[data-rv]').forEach((el,i) => el.style.setProperty('--i', i)));
 function show(v, first){
@@ -899,9 +945,10 @@ function seed(){
 let state; try { state = JSON.parse(localStorage.getItem(KEY)); } catch(e){ state = null; }
 if(!state || !state.settings || !Array.isArray(state.requests)) state = seed();
 if(typeof state.settings.notice !== 'string') state.settings.notice = DEFAULTS().notice;
+/* customer details are never kept on the device: only the chosen slot is stored */
+const slim = r => r.example ? r : {id:r.id, created:r.created, date:r.date, time:r.time, status:r.status, example:false, slim:true, name:'(הפרטים בוואטסאפ)', phone:'', idea:'הפרטים נשלחו לעדי בוואטסאפ ולא נשמרו במכשיר.', placement:'—', size:'—', first:false, ref:null};
 function save(){
-  try { localStorage.setItem(KEY, JSON.stringify(state)); }
-  catch(e){ try { localStorage.setItem(KEY, JSON.stringify({...state, requests: state.requests.map((r,i,a) => i < a.length-3 ? {...r, ref:null} : r)})); } catch(e2){} }
+  try { localStorage.setItem(KEY, JSON.stringify({...state, requests: state.requests.map(slim)})); } catch(e){}
 }
 save();
 const busy = (date,time) => state.requests.find(r => r.date === date && r.time === time && (r.status === 'pending' || r.status === 'approved'));
@@ -1041,7 +1088,7 @@ $('#bookForm').addEventListener('submit', e => {
     <p class="muted">שמרנו עבורך את ${esc(fmtMid(r.date))} בשעה ${r.time}. שלחו את ההודעה לעדי${r.ref ? ' וצרפו את תמונת הרפרנס בצ׳אט' : ''}.</p>
     <div class="msg" id="msgBox">${esc(msg)}</div>
     <div class="acts"><a class="btn wa" href="${waLink(PHONE_INTL, msg)}" target="_blank" rel="noopener">שליחה לעדי בוואטסאפ</a><button class="btn ghost" type="button" id="copyMsg">העתקת ההודעה</button></div>
-    <p class="note">אם הוואטסאפ לא נפתח, העתיקו ושלחו ל־050-3630384. <button class="copy" type="button" id="newReq">בקשה חדשה</button> · <a href="#admin">לדף הניהול</a></p>`;
+    <p class="note">אם הוואטסאפ לא נפתח, העתיקו ושלחו ל־050-3630384. <button class="copy" type="button" id="newReq">בקשה חדשה</button></p>`;
   stepN = 3; goStep(4); $('#ticket').classList.add('sent');
   $('#copyMsg').onclick = () => navigator.clipboard ? navigator.clipboard.writeText(msg).then(() => toast('ההודעה הועתקה'), () => selectText($('#msgBox'))) : selectText($('#msgBox'));
   $('#newReq').onclick = resetBooking;
@@ -1099,8 +1146,8 @@ function paintReqs(){
       <div class="side">
         ${r.ref ? `<img class="ref" src="${r.ref}" alt="רפרנס של ${esc(r.name)}" data-ref="${r.id}">` : ''}
         ${r.status === 'pending' ? `<button class="btn sm" type="button" data-act="approve">אישור</button><button class="btn ghost sm" type="button" data-act="reject">דחייה</button>` : ''}
-        ${r.status === 'approved' ? `<a class="btn wa sm" target="_blank" rel="noopener" href="${waLink(clientWa(r.phone), approveText(r))}">הודעת אישור ללקוח/ה</a><button class="btn ghost sm" type="button" data-act="cancel">ביטול התור</button>` : ''}
-        ${r.status === 'rejected' ? `<a class="btn ghost sm" target="_blank" rel="noopener" href="${waLink(clientWa(r.phone), rejectText(r))}">הצעת מועד אחר</a><button class="btn ghost sm" type="button" data-act="restore">החזרה לממתינות</button>` : ''}
+        ${r.status === 'approved' ? `${r.phone ? `<a class="btn wa sm" target="_blank" rel="noopener" href="${waLink(clientWa(r.phone), approveText(r))}">הודעת אישור ללקוח/ה</a>` : ''}<button class="btn ghost sm" type="button" data-act="cancel">ביטול התור</button>` : ''}
+        ${r.status === 'rejected' ? `${r.phone ? `<a class="btn ghost sm" target="_blank" rel="noopener" href="${waLink(clientWa(r.phone), rejectText(r))}">הצעת מועד אחר</a>` : ''}<button class="btn ghost sm" type="button" data-act="restore">החזרה לממתינות</button>` : ''}
       </div></article>`).join('') : `<div class="empty">${reqFilter === 'pending' ? 'אין בקשות שמחכות לאישור. בקשה חדשה מהאתר תופיע כאן.' : 'אין בקשות בקטגוריה הזו.'}</div>`;
 }
 $('#reqFilters').addEventListener('click', e => { const b = e.target.closest('[data-rf]'); if(!b) return; reqFilter = b.dataset.rf; paintReqs(); });
