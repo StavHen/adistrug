@@ -9,7 +9,7 @@
 <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#c9bdb2">
+<meta name="theme-color" content="#6e665e">
 <meta name="apple-mobile-web-app-title" content="Adi Strug">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
@@ -25,7 +25,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TattooParlor","name":"Adi Strug Tattoo","url":"https://adistrug.netlify.app/","image":"https://adistrug.netlify.app/og.jpg","logo":"https://adistrug.netlify.app/icon-512.png","address":{"@type":"PostalAddress","addressLocality":"גבעתיים","addressCountry":"IL"},"sameAs":["https://www.instagram.com/adistrug/"]}</script>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Adi Strug · קעקועים בקו עדין, גבעתיים</title>
-<script>try{var t=localStorage.getItem('adistrug-theme'),x=localStorage.getItem('adistrug-text');if(t==='dark')document.documentElement.dataset.theme=t;if(x==='large')document.documentElement.dataset.text='large';}catch(e){}</script>
+<script>try{var t=localStorage.getItem('adistrug-theme'),x=localStorage.getItem('adistrug-text');if(t==='light')document.documentElement.dataset.theme=t;if(x==='large')document.documentElement.dataset.text='large';}catch(e){}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -36,16 +36,17 @@
 </style>
 <style>
 /* Layout: home, work, "let's talk" (contact form that opens WhatsApp), studio.
-   Warm concrete grey ground (Adi's sample #c9bdb2), thin clean type (Heebo light). Dark mode: deeper concrete with white type. */
+   Default: warm concrete grey with white type (Adi's pick, 17.11). Light view: her sample #c9bdb2 with dark type. Thin clean type (Heebo light). */
 :root{
-  --ink:#c9bdb2;--ink-2:#d2c7bd;--ink-3:#dbd1c8;
-  --line:rgba(38,34,30,.16);--line-strong:rgba(38,34,30,.32);
-  --bone:#26221e;--bone-2:#39332d;--mute:#4a423b;
-  --skin:#5e3f2c;--red:#8f2f22;--sage:#3f5a37;
-  --glass-1:rgba(201,189,178,.7);--glass-2:rgba(201,189,178,.92);--glass-head:rgba(201,189,178,.9);--glass-bar:rgba(201,189,178,.95);
-  --err:#7e2417;
-  --grain:multiply;--grain-o:.10;
-  color-scheme:light;
+  --ink:#6e665e;--ink-2:#665e57;--ink-3:#5f5851;
+  --line:rgba(255,255,255,.2);--line-strong:rgba(255,255,255,.38);
+  --bone:#ffffff;--bone-2:#f6f3ef;--mute:#f3efea;
+  --skin:#f6e2d4;--red:#ffe6df;--sage:#e2eedb;
+  --on:#2e2924;
+  --glass-1:rgba(110,102,94,.6);--glass-2:rgba(110,102,94,.9);--glass-head:rgba(110,102,94,.88);--glass-bar:rgba(110,102,94,.95);
+  --err:#ffe6df;
+  --grain:screen;--grain-o:.06;
+  color-scheme:dark;
   --display:"Heebo","Segoe UI",Arial,sans-serif;
   --dweight:300;
   --body:"Heebo","Segoe UI",Arial,sans-serif;
@@ -56,16 +57,17 @@
   --fs:1;
   --fs-big:1;
 }
-/* dark mode: only when the visitor picks it (light is the default, Adi's choice) */
-:root[data-theme="dark"]{
-  --ink:#5f5851;--ink-2:#57514a;--ink-3:#4f4943;
-  --line:rgba(255,255,255,.16);--line-strong:rgba(255,255,255,.32);
-  --bone:#ffffff;--bone-2:#f3efea;--mute:#e6e0d9;
-  --skin:#f1d2bd;--red:#ffb4a6;--sage:#cfe0c6;
-  --glass-1:rgba(95,88,81,.6);--glass-2:rgba(95,88,81,.9);--glass-head:rgba(95,88,81,.88);--glass-bar:rgba(95,88,81,.95);
-  --err:#ffd9cf;
-  --grain:screen;--grain-o:.06;
-  color-scheme:dark;
+/* light view: Adi's concrete sample with dark text, when the visitor picks "בהיר" */
+:root[data-theme="light"]{
+  --ink:#c9bdb2;--ink-2:#d2c7bd;--ink-3:#dbd1c8;
+  --line:rgba(38,34,30,.16);--line-strong:rgba(38,34,30,.32);
+  --bone:#26221e;--bone-2:#39332d;--mute:#4a423b;
+  --skin:#5e3f2c;--red:#8f2f22;--sage:#3f5a37;
+  --glass-1:rgba(201,189,178,.7);--glass-2:rgba(201,189,178,.92);--glass-head:rgba(201,189,178,.9);--glass-bar:rgba(201,189,178,.95);
+  --err:#7e2417;
+  --grain:multiply;--grain-o:.10;
+  color-scheme:light;
+  --on:#c9bdb2;
 }
 /* large text */
 :root[data-text="large"]{--fs:1.25;--fs-big:1.06}
@@ -73,7 +75,7 @@
 .lb,.cat,.deck-cap,.stage{
   --ink:#26221e;--ink-2:#302b26;--ink-3:#3a342e;
   --line:rgba(255,255,255,.16);--line-strong:rgba(255,255,255,.32);
-  --bone:#ffffff;--bone-2:#f3efea;--mute:#e6e0d9;--skin:#f1d2bd;
+  --bone:#ffffff;--bone-2:#f3efea;--mute:#e6e0d9;--skin:#f1d2bd;--on:#26221e;
   --glass-1:rgba(38,34,30,.5);--glass-2:rgba(38,34,30,.85);
   color:var(--bone);
 }
@@ -98,13 +100,13 @@ p{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* buttons: fill sweeps in from the reading edge */
-.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 26px;border:1px solid var(--bone);background:var(--bone);color:var(--ink);border-radius:var(--r);font-weight:500;font-size:calc(15px * var(--fs));letter-spacing:.02em;cursor:pointer;text-decoration:none;white-space:nowrap;transition:color .45s var(--ease),border-color .45s var(--ease)}
+.btn{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:14px 26px;border:1px solid var(--bone);background:var(--bone);color:var(--on);border-radius:var(--r);font-weight:500;font-size:calc(15px * var(--fs));letter-spacing:.02em;cursor:pointer;text-decoration:none;white-space:nowrap;transition:color .45s var(--ease),border-color .45s var(--ease)}
 .btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--skin);transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease)}
 .btn:hover::before{transform:scaleX(1)}
 .btn:hover{border-color:var(--skin)}
 .btn.ghost{background:transparent;color:var(--bone);border-color:var(--line-strong)}
 .btn.ghost::before{background:var(--bone)}
-.btn.ghost:hover{color:var(--ink);border-color:var(--bone)}
+.btn.ghost:hover{color:var(--on);border-color:var(--bone)}
 .btn.sm{padding:10px 18px;font-size:calc(14px * var(--fs))}
 .btn[disabled]{opacity:.35;cursor:not-allowed}
 .btn[disabled]::before{display:none}
@@ -112,7 +114,7 @@ p{margin:0}
 .btn:hover .arr,a:hover > .arr{transform:translateX(-5px)}
 .chip{border:1px solid var(--line-strong);background:transparent;border-radius:999px;padding:8px 16px;font-size:calc(14.5px * var(--fs));color:var(--mute);cursor:pointer;transition:color .3s,border-color .3s,background .3s;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
 .chip:hover{color:var(--bone);border-color:var(--bone)}
-.chip[aria-pressed="true"],.chip[aria-selected="true"]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.chip[aria-pressed="true"],.chip[aria-selected="true"]{background:var(--bone);color:var(--on);border-color:var(--bone)}
 .chip .n{font-variant-numeric:tabular-nums;font-size:calc(12px * var(--fs));opacity:.9}
 .icon-btn{width:42px;height:42px;border:1px solid var(--line-strong);background:var(--glass-1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border-radius:50%;cursor:pointer;display:grid;place-items:center;font-family:var(--latin);font-size:calc(22px * var(--fs));line-height:1;transition:border-color .3s,background .3s}
 .icon-btn:hover:not([disabled]){border-color:var(--bone);background:var(--glass-2)}
@@ -163,7 +165,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
   .tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 3px;text-decoration:none;font-size:calc(12.5px * var(--fs));color:var(--mute);border-radius:12px;transition:color .3s,background .3s}
   .tabbar a svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.2}
   .tabbar a[aria-current="page"]{color:var(--bone)}
-  .tabbar a.book{background:var(--skin);color:var(--ink);font-weight:500;margin-inline:4px}
+  .tabbar a.book{background:var(--skin);color:var(--on);font-weight:500;margin-inline:4px}
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }
 
@@ -377,7 +379,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .a11y-panel .lbl{font-size:calc(13px * var(--fs));color:var(--mute)}
 .a11y-seg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .a11y-seg button,.a11y-big{font:inherit;font-size:calc(14px * var(--fs));padding:9px 6px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--bone);cursor:pointer}
-.a11y-seg button[aria-pressed="true"],.a11y-big[aria-pressed="true"]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.a11y-seg button[aria-pressed="true"],.a11y-big[aria-pressed="true"]{background:var(--bone);color:var(--on);border-color:var(--bone)}
 .a11y-panel a{color:var(--skin);font-size:calc(13.5px * var(--fs))}
 details{border-bottom:1px solid var(--line);padding-block:20px}
 details summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:var(--display);font-weight:var(--dweight);font-size:calc(22px * var(--fs))}
@@ -407,7 +409,7 @@ footer.foot .cols b{display:block;color:var(--bone);font-weight:400}
 
 
 
-.toast{position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 96px);left:50%;transform:translate(-50%,20px);background:var(--bone);color:var(--ink);padding:11px 22px;border-radius:999px;font-size:calc(15px * var(--fs));font-weight:500;opacity:0;transition:all .4s var(--ease);z-index:300;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
+.toast{position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 96px);left:50%;transform:translate(-50%,20px);background:var(--bone);color:var(--on);padding:11px 22px;border-radius:999px;font-size:calc(15px * var(--fs));font-weight:500;opacity:0;transition:all .4s var(--ease);z-index:300;pointer-events:none;max-width:calc(100% - 32px);text-align:center}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 @media (min-width:861px){.toast{bottom:calc(env(safe-area-inset-bottom,0px) + 28px)}}
 
@@ -480,7 +482,7 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
         <div class="hero-text">
           <h1 class="sr">Adi Strug, מקעקעת בגבעתיים</h1>
           <figure class="about" data-rv>
-            <div class="portrait"><img src="img/adi-1.jpg" alt="Adi Strug מקעקעת בסטודיו" width="800" height="800" fetchpriority="high"></div>
+            <div class="portrait"><img src="img/adi-3.jpg" alt="Adi Strug מקעקעת בסטודיו" width="800" height="800" fetchpriority="high"></div>
             <figcaption class="quote">עבורי קעקוע הוא הרבה מעבר לתוצאה שעל העור. הוא תהליך אישי שמתחיל בשיחה, בהיכרות ובהקשבה לסיפור ולרעיון שמאחוריו.</figcaption>
           </figure>
           <div class="next" data-rv>
@@ -904,8 +906,8 @@ function resetTalk(){
   const root = document.documentElement, btn = $('#a11yBtn'), panel = $('#a11yPanel');
   const store = (k,v) => { try { if(v === null) localStorage.removeItem(k); else localStorage.setItem(k,v); } catch(e){} };
   const paint = () => {
-    const t = root.dataset.theme === 'dark' ? 'dark' : 'light';
-    document.querySelector('meta[name="theme-color"]').content = t === 'dark' ? '#5f5851' : '#c9bdb2';
+    const t = root.dataset.theme === 'light' ? 'light' : 'dark';
+    document.querySelector('meta[name="theme-color"]').content = t === 'light' ? '#c9bdb2' : '#6e665e';
     $$('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', b.dataset.themeSet === t));
     $('#a11yText').setAttribute('aria-pressed', root.dataset.text === 'large');
   };
@@ -913,7 +915,7 @@ function resetTalk(){
   btn.onclick = () => open(panel.hidden);
   $$('[data-theme-set]').forEach(b => b.onclick = () => {
     const t = b.dataset.themeSet;
-    if(t === 'light'){ delete root.dataset.theme; store('adistrug-theme', null); } else { root.dataset.theme = t; store('adistrug-theme', t); }
+    if(t === 'dark'){ delete root.dataset.theme; store('adistrug-theme', null); } else { root.dataset.theme = t; store('adistrug-theme', t); }
     paint();
   });
   $('#a11yText').onclick = () => {
