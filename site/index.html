@@ -9,8 +9,7 @@
 <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#c9bdb2" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#5f5851" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#c9bdb2">
 <meta name="apple-mobile-web-app-title" content="Adi Strug">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
@@ -26,7 +25,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"TattooParlor","name":"Adi Strug Tattoo","url":"https://adistrug.netlify.app/","image":"https://adistrug.netlify.app/og.jpg","logo":"https://adistrug.netlify.app/icon-512.png","address":{"@type":"PostalAddress","addressLocality":"גבעתיים","addressCountry":"IL"},"sameAs":["https://www.instagram.com/adistrug/"]}</script>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Adi Strug · קעקועים בקו עדין, גבעתיים</title>
-<script>try{var t=localStorage.getItem('adistrug-theme'),x=localStorage.getItem('adistrug-text');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;if(x==='large')document.documentElement.dataset.text='large';}catch(e){}</script>
+<script>try{var t=localStorage.getItem('adistrug-theme'),x=localStorage.getItem('adistrug-text');if(t==='dark')document.documentElement.dataset.theme=t;if(x==='large')document.documentElement.dataset.text='large';}catch(e){}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preload" href="fonts/heebo-hebrew.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -57,19 +56,7 @@
   --fs:1;
   --fs-big:1;
 }
-/* dark mode: follows the phone's setting unless the visitor chose one */
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-  --ink:#5f5851;--ink-2:#57514a;--ink-3:#4f4943;
-  --line:rgba(255,255,255,.16);--line-strong:rgba(255,255,255,.32);
-  --bone:#ffffff;--bone-2:#f3efea;--mute:#e6e0d9;
-  --skin:#f1d2bd;--red:#ffb4a6;--sage:#cfe0c6;
-  --glass-1:rgba(95,88,81,.6);--glass-2:rgba(95,88,81,.9);--glass-head:rgba(95,88,81,.88);--glass-bar:rgba(95,88,81,.95);
-  --err:#ffd9cf;
-  --grain:screen;--grain-o:.06;
-  color-scheme:dark;
-  }
-}
+/* dark mode: only when the visitor picks it (light is the default, Adi's choice) */
 :root[data-theme="dark"]{
   --ink:#5f5851;--ink-2:#57514a;--ink-3:#4f4943;
   --line:rgba(255,255,255,.16);--line-strong:rgba(255,255,255,.32);
@@ -388,7 +375,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .a11y-panel{position:absolute;top:calc(100% + 10px);inset-inline-end:0;z-index:5;background:var(--ink-2);color:var(--bone);border:1px solid var(--line-strong);border-radius:14px;padding:16px;width:min(280px,calc(100vw - 32px));display:flex;flex-direction:column;gap:12px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 .a11y-panel b{font-weight:500;font-size:calc(15px * var(--fs))}
 .a11y-panel .lbl{font-size:calc(13px * var(--fs));color:var(--mute)}
-.a11y-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.a11y-seg{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
 .a11y-seg button,.a11y-big{font:inherit;font-size:calc(14px * var(--fs));padding:9px 6px;border-radius:10px;border:1px solid var(--line-strong);background:transparent;color:var(--bone);cursor:pointer}
 .a11y-seg button[aria-pressed="true"],.a11y-big[aria-pressed="true"]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .a11y-panel a{color:var(--skin);font-size:calc(13.5px * var(--fs))}
@@ -470,7 +457,6 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
         <b>תצוגה</b>
         <span class="lbl" id="themeLbl">צבעים</span>
         <div class="a11y-seg" role="group" aria-labelledby="themeLbl">
-          <button type="button" data-theme-set="auto">אוטומטי</button>
           <button type="button" data-theme-set="light">בהיר</button>
           <button type="button" data-theme-set="dark">כהה</button>
         </div>
@@ -636,7 +622,7 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
           <li>לתמונות ולכפתורים יש תיאור לקוראי מסך.</li>
           <li>ניגודיות צבעים ברורה בין הטקסט לרקע.</li>
           <li>מי שהגדיר במכשיר "הפחתת תנועה" לא יראה אנימציות.</li>
-          <li>כפתור התצוגה בפינת המסך: כתב גדול, ומצב בהיר או כהה. במצב "אוטומטי" האתר מתאים את עצמו להגדרה של המכשיר.</li>
+          <li>כפתור התצוגה בפינת המסך: כתב גדול, ומצב בהיר או כהה (עם טקסט לבן).</li>
           <li>אפשר להגדיל את הטקסט בדפדפן בלי לשבור את הדף.</li>
         </ul></div>
         <div><h3>נתקלתם בבעיה?</h3><p>אם משהו באתר לא נגיש לכם, כתבו לי בוואטסאפ: <span class="tel" dir="ltr">050-3630384</span>. אחזור אליכם ואתקן.</p></div>
@@ -918,7 +904,8 @@ function resetTalk(){
   const root = document.documentElement, btn = $('#a11yBtn'), panel = $('#a11yPanel');
   const store = (k,v) => { try { if(v === null) localStorage.removeItem(k); else localStorage.setItem(k,v); } catch(e){} };
   const paint = () => {
-    const t = root.dataset.theme || 'auto';
+    const t = root.dataset.theme === 'dark' ? 'dark' : 'light';
+    document.querySelector('meta[name="theme-color"]').content = t === 'dark' ? '#5f5851' : '#c9bdb2';
     $$('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', b.dataset.themeSet === t));
     $('#a11yText').setAttribute('aria-pressed', root.dataset.text === 'large');
   };
@@ -926,7 +913,7 @@ function resetTalk(){
   btn.onclick = () => open(panel.hidden);
   $$('[data-theme-set]').forEach(b => b.onclick = () => {
     const t = b.dataset.themeSet;
-    if(t === 'auto'){ delete root.dataset.theme; store('adistrug-theme', null); } else { root.dataset.theme = t; store('adistrug-theme', t); }
+    if(t === 'light'){ delete root.dataset.theme; store('adistrug-theme', null); } else { root.dataset.theme = t; store('adistrug-theme', t); }
     paint();
   });
   $('#a11yText').onclick = () => {
