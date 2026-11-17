@@ -19,3 +19,9 @@ When the real calendar is added (Firebase), its domains must be added to `connec
 ## This repository is public
 It is public so Netlify's free plan builds previews for every change. Never commit
 passwords, private keys, customer details or anything else that should stay private.
+
+## Site address
+The full address `https://adistrug.netlify.app/` is written in `site/index.html` (link preview and search tags), `site/robots.txt` and `site/sitemap.xml`. If the site moves to its own domain, update it in those three files.
+
+## Fonts
+Fonts are hosted in `site/fonts/` (no requests to Google). Licence: `site/fonts/LICENSE.txt`.
