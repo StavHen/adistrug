@@ -702,6 +702,7 @@ if(EMAIL){ $$('[data-email]').forEach(a => { a.href = `mailto:${EMAIL}`; a.textC
 
 /* ---------- works (newest first) ---------- */
 const WORKS = [
+ ['082','פרח בתוך אליפסה'],['081','פרחים על המותן'],['080','פנס על הכתף'],['079','חמסה זוגית'],
  ['078','פפיון עדין'],['077','כובע בקו דק'],
  ['001','פלואו ושמש'],['002','עץ ומאזניים'],['011','עוף החול'],
  ['000','מניפות יפניות'],['023','פטיפון'],['015','פרה ואנפה'],
@@ -740,7 +741,7 @@ window.addEventListener('hashchange', () => show(cur()));
 const hdr = $('#hdr'); addEventListener('scroll', () => hdr.classList.toggle('solid', scrollY > 20), {passive:true});
 
 /* ---------- home: deck ---------- */
-const FEAT = ['078','001','011','023','077','039','002','037'].map(id => WORKS.find(w => w.id === id));
+const FEAT = ['078','082','001','080','011','077','023','081'].map(id => WORKS.find(w => w.id === id));
 let di = 0, dTimer = null;
 function deckPaint(animate){
   const w = FEAT[di], st = $('#deck');
