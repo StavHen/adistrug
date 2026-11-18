@@ -940,7 +940,7 @@ const REV_SHOW = [1,4,3, 2,11,15, 9,6,23, 27,5,7, 13,14,17, 12,16,19, 21,22,10, 
 const LETTER = REVIEWS[7];
 const letterHTML = () => `<div class="rcard rletter"><p class="rl-cap">מכתב שקיבלתי מאמא ובת אחרי קעקוע משותף</p><div class="rl-parts">${[['a',287],['b',176],['c',176]].map(([n,h], i) => `<figure class="rmsg" style="--w:387;--k:.82"><img src="img/reviews/08${n}.jpg" alt="${i ? '' : esc('מכתב מלקוחה: ' + LETTER.t)}" loading="lazy" width="387" height="${h}"></figure>`).join('')}</div></div>`;
 $('#homeRevs').innerHTML = revHTML(REV_SHOW.slice(0, 6));
-$('#allRevs').innerHTML = revHTML(REV_SHOW.slice(0, 9)) + letterHTML() + revHTML(REV_SHOW.slice(9));
+$('#allRevs').innerHTML = revHTML(REV_SHOW) + letterHTML();
 
 
 /* ---------- helpers ---------- */
