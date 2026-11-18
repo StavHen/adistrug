@@ -251,6 +251,17 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .step h3{font-size:calc(25px * var(--fs));margin-block:14px 8px}
 .step p{color:var(--mute);font-size:calc(15.5px * var(--fs));max-width:28ch}
 @media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:28px}.step:nth-child(3){border-inline-start:0;padding-inline-start:0}}
+.revs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.revs button{display:block;padding:0;border:1px solid var(--line);background:var(--ink-3);cursor:zoom-in;border-radius:14px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.18);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.revs button:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,.24)}
+.revs img{display:block;width:100%;height:auto;aspect-ratio:9/16}
+.revs.home button:nth-child(n+5){display:none}
+@media (max-width:1000px){.revs{grid-template-columns:repeat(3,minmax(0,1fr))}.revs.home button:nth-child(n+4){display:none}}
+@media (max-width:700px){.revs{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.revs button{border-radius:10px}}
+@media (max-width:560px){.revs.home{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));padding-bottom:6px;scrollbar-width:none}.revs.home::-webkit-scrollbar{display:none}.revs.home button{flex:0 0 66%;scroll-snap-align:start}.revs.home button:nth-child(n){display:block}}
+@media (max-width:430px){.revs:not(.home){grid-template-columns:1fr;max-width:400px;margin-inline:auto;gap:18px}}
+@media (max-width:700px){.lb.is-review .lb-prev,.lb.is-review .lb-next{display:none}}
+.revs-note{color:var(--mute);font-size:calc(14px * var(--fs));margin-top:22px}
 .home-cta{margin-top:56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:34px;border:1px solid var(--line-strong);background:var(--ink-2)}
 .home-cta h3{font-size:calc(clamp(30px,3.6vw,44px) * var(--fs-big))}
 
@@ -527,6 +538,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <nav class="links" aria-label="ניווט ראשי">
       <a href="#home" data-nav="home">בית</a>
       <a href="#work" data-nav="work">עבודות</a>
+      <a href="#reviews" data-nav="reviews">מה אומרים</a>
       <a href="#studio" data-nav="studio">סטודיו</a>
     </nav>
     <a class="btn sm cta" href="#talk">בואו נדבר <span class="arr">←</span></a>
@@ -591,6 +603,10 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
         <div class="step"><div class="num">4</div><h3>סקיצה וקעקוע</h3><p>נפגשים, מדייקים יחד את הסקיצה והמיקום, ומתחילים.</p></div>
       </div>
     </div>
+    <div class="wrap home-sec">
+      <div class="sec-head" data-sr><div><h2>מה אומרים</h2></div><a class="more" href="#reviews">לכל ההודעות <span class="arr">←</span></a></div>
+      <div class="revs home" id="homeRevs" data-sr></div>
+    </div>
     <div class="band" data-sr>
       <div class="band-ph" id="bandPh" aria-hidden="true"></div>
       <div class="band-in">
@@ -605,6 +621,16 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <div class="wrap">
       <div class="page-head"><div><h2 data-rv>עבודות</h2></div></div>
       <div class="wall" id="wall" aria-label="כל העבודות"></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="view" data-view="reviews" hidden>
+    <div class="wrap">
+      <div class="page-head"><div><h2 data-rv>מה אומרים</h2><p class="lead" data-rv>הודעות שקיבלתי אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
+      <div class="revs" id="allRevs"></div>
+      <p class="revs-note">לחצו על הודעה כדי לקרוא אותה בגדול.</p>
+      <div style="height:80px"></div>
     </div>
   </section>
 
@@ -716,7 +742,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       <div data-email-col hidden><b>מייל</b><a class="tel" dir="ltr" data-email></a></div>
       <div><b>סטודיו</b>גבעתיים</div>
       <div><b>ימים</b>ראשון עד שישי<br>שעות בתיאום</div>
-      <div><b>מידע</b><a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
+      <div><b>מידע</b><a href="#reviews">מה אומרים</a> · <a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
     </div>
   </div></footer>
 
@@ -790,7 +816,7 @@ const src = w => w.src || `img/${w.id}.jpg`;
 const thumb = w => w.src || `img/t/${w.id}.jpg`;
 
 /* ---------- router ---------- */
-const VIEWS = ['home','work','talk','studio','privacy','accessibility'];
+const VIEWS = ['home','work','reviews','talk','studio','privacy','accessibility'];
 const ALIAS = {book:'talk', admin:'home'};
 const cur = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : (ALIAS[h] || 'home'); };
 $$('.view').forEach(v => v.querySelectorAll('[data-rv]').forEach((el,i) => el.style.setProperty('--i', i)));
@@ -882,7 +908,7 @@ function prefill(text){ const idea = $('#idea'); idea.value = text + idea.value.
 /* ---------- lightbox ---------- */
 let lbList = [], lbI = 0, lbFocus = null;
 let lbKind = 'work';
-function openLb(i, list, kind){ lbKind = kind || 'work'; $('#lbBook').innerHTML = (lbKind === 'flash' ? 'אני רוצה את הפלאש הזה' : 'רוצה משהו כזה') + ' <span class="arr">←</span>'; $('#lb').setAttribute('aria-label', lbKind === 'flash' ? 'תצוגת פלאשים' : 'תצוגת עבודה'); lbList = list; lbI = i; lbFocus = document.activeElement; $('#lb').hidden = false; document.body.style.overflow = 'hidden'; paintLb(); $('#lbClose').focus(); }
+function openLb(i, list, kind){ lbKind = kind || 'work'; $('#lbBook').hidden = lbKind === 'review'; $('#lb').classList.toggle('is-review', lbKind === 'review'); $('#lbBook').innerHTML = (lbKind === 'flash' ? 'אני רוצה את הפלאש הזה' : 'רוצה משהו כזה') + ' <span class="arr">←</span>'; $('#lb').setAttribute('aria-label', lbKind === 'flash' ? 'תצוגת פלאשים' : lbKind === 'review' ? 'הודעות מלקוחות' : 'תצוגת עבודה'); lbList = list; lbI = i; lbFocus = document.activeElement; $('#lb').hidden = false; document.body.style.overflow = 'hidden'; paintLb(); $('#lbClose').focus(); }
 function paintLb(){
   const w = lbList[lbI], img = $('#lbImg'); img.src = src(w); img.alt = w.alt || `קעקוע: ${w.t}`;
   $('#lbCount').textContent = lbList.length > 1 ? `${two(lbI+1)} / ${two(lbList.length)}` : '';
@@ -905,6 +931,11 @@ const FLASHES = [...Array.from({length:12}, (_, i) => { const n = String(i+1).pa
   .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
 $('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
 $('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
+
+/* ---------- reviews: screenshots of clients' messages ---------- */
+const REVIEWS = Array.from({length:7}, (_, i) => ({src:`img/reviews/r${i+1}.jpg`, th:`img/reviews/r${i+1}-s.jpg`, alt:`הודעות תודה מלקוחות, תמונה ${i+1} מתוך 7`}));
+const revHTML = list => list.map((r, i) => `<button type="button" data-r="${i}" aria-label="פתיחה בגדול: ${r.alt}"><img src="${r.th}" srcset="${r.th} 360w, ${r.src} 720w" sizes="(max-width:430px) 92vw, (max-width:700px) 46vw, 300px" alt="" loading="lazy" width="360" height="640"></button>`).join('');
+['#homeRevs','#allRevs'].forEach(sel => { const el = $(sel); el.innerHTML = revHTML(REVIEWS); el.addEventListener('click', e => { const b = e.target.closest('[data-r]'); if(b) openLb(+b.dataset.r, REVIEWS, 'review'); }); });
 
 /* ---------- helpers ---------- */
 function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('סמנו והעתיקו'); }
