@@ -476,6 +476,46 @@ footer.foot .cols{row-gap:6px}
 .logo small{margin-inline-start:0;margin-left:10px}
 #homeWorks .cat::after{display:none}
 #homeWorks .cat img{filter:none}
+
+/* ===== sora-inspired round (18.11): photo band, works wall, floating WhatsApp, scroll reveal, days in footer ===== */
+/* 1. full-width photo band with the "let's talk" line */
+.band{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(380px,56vh,520px);display:grid;place-items:center;text-align:center;margin-top:84px;background:#26221e}
+.band-ph{position:absolute;inset:0;z-index:-2;display:flex;gap:2px}
+.band-ph > div{position:relative;flex:1 1 0;overflow:hidden}
+.band-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease}
+.band-ph img.on{opacity:1;animation:drift 9s linear both}
+@keyframes drift{from{transform:scale(1.05)}to{transform:scale(1)}}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(20,18,16,.58),rgba(20,18,16,.66))}
+.band-in{padding:56px 22px;display:grid;justify-items:center;gap:28px;max-width:900px}
+.band h3{font-size:calc(clamp(34px,5vw,64px) * var(--fs-big));line-height:1.12;color:#fff;text-shadow:0 1px 18px rgba(0,0,0,.35)}
+.band .btn{background:#fff;border-color:#fff;color:#26221e}
+.band .btn:hover{color:#26221e}
+@media (max-width:560px){.band{min-height:440px;margin-top:64px}}
+
+/* 2. works wall: big photos, natural proportions, no crop, no titles */
+.wall{display:flex;gap:14px;align-items:flex-start;padding-bottom:84px}
+.wall-col{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:14px}
+.tile{position:relative;display:block;border:0;padding:0;background:var(--ink-2);cursor:zoom-in;overflow:hidden;width:100%}
+.tile img{width:100%;height:auto;transition:transform 1.2s var(--ease),filter .6s;filter:saturate(.92)}
+.tile:hover img{transform:scale(1.04);filter:none}
+.tile .go{position:absolute;bottom:14px;inset-inline-end:14px;padding:8px 14px;border-radius:999px;background:rgba(20,18,16,.62);color:#fff;font-size:calc(13.5px * var(--fs));opacity:0;transform:translateY(6px);transition:all .5s var(--ease);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);white-space:nowrap}
+.tile:hover .go,.tile:focus-visible .go{opacity:1;transform:none}
+@media (max-width:900px){.wall,.wall-col{gap:8px}}
+@media (max-width:560px){.wall{margin-inline:-8px}}
+
+/* 3. floating WhatsApp on desktop (phones already have the bottom bar) */
+.wa-float{position:fixed;bottom:28px;left:28px;z-index:75;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--bone);color:var(--on);box-shadow:0 8px 28px rgba(0,0,0,.25);text-decoration:none;transition:transform .45s var(--ease),opacity .4s}
+.wa-float svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linejoin:round}
+.wa-float:hover{transform:translateY(-3px) scale(1.04)}
+.wa-float .tip{position:absolute;left:calc(100% + 12px);top:50%;transform:translateY(-50%);background:var(--bone);color:var(--on);padding:7px 14px;border-radius:999px;font-size:calc(14px * var(--fs));white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .35s}
+.wa-float:hover .tip,.wa-float:focus-visible .tip{opacity:1}
+body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
+@media (max-width:860px){.wa-float{display:none}}
+
+/* 4. gentle reveal while scrolling (only when motion is allowed and JS runs) */
+.sr-on [data-sr]{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--d,0) * 60ms)}
+.sr-on [data-sr].in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.sr-on [data-sr]{opacity:1;transform:none}}
 </style>
 
 <div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><span class="intro-name">Adi Strug</span><span class="intro-line"></span><span class="intro-sub">TATTOOS · GIVATAYIM</span></div></div>
@@ -540,17 +580,23 @@ footer.foot .cols{row-gap:6px}
     </div>
     <div class="wrap home-sec">
       <div class="sec-head"><div><h2 data-rv>עבודות</h2></div><a class="more" href="#work" data-rv>לכל העבודות <span class="arr">←</span></a></div>
-      <div class="cat-grid" id="homeWorks"></div>
+      <div class="cat-grid" id="homeWorks" data-sr></div>
     </div>
-    <div class="wrap home-sec" style="padding-top:0">
-      <div class="sec-head"><div><h2>איך זה עובד</h2></div></div>
-      <div class="steps">
+    <div class="wrap home-sec" style="padding-top:0;padding-bottom:0">
+      <div class="sec-head" data-sr><div><h2>איך זה עובד</h2></div></div>
+      <div class="steps" data-sr>
         <div class="step"><div class="num">1</div><h3>מתאמים תור</h3><p>בשיחה איתי, בלי יומן ובלי טפסים מסובכים.</p></div>
         <div class="step"><div class="num">2</div><h3>מספרים על הרעיון</h3><p>מה, איפה בגוף, באיזה גודל, ותמונת השראה (רפרנס, במידה ויש).</p></div>
         <div class="step"><div class="num">3</div><h3>אישור אחרי מקדמה</h3><p>התור ישוריין לאחר תשלום מקדמה.</p></div>
         <div class="step"><div class="num">4</div><h3>סקיצה וקעקוע</h3><p>מדייקים יחד את הסקיצה והמיקום, ומתחילים.</p></div>
       </div>
-      <div class="home-cta"><h3>יש לכם רעיון? <span class="nw">בואו נדבר <span dir="ltr">:)</span></span></h3><a class="btn" href="#talk">לכתוב לי <span class="arr">←</span></a></div>
+    </div>
+    <div class="band" data-sr>
+      <div class="band-ph" id="bandPh" aria-hidden="true"></div>
+      <div class="band-in">
+        <h3><span class="nw">יש לכם רעיון?</span> <span class="nw">בואו נדבר <span dir="ltr">:)</span></span></h3>
+        <a class="btn" href="#talk">לכתוב לי <span class="arr">←</span></a>
+      </div>
     </div>
   </section>
 
@@ -558,16 +604,7 @@ footer.foot .cols{row-gap:6px}
   <section class="view" data-view="work" hidden>
     <div class="wrap">
       <div class="page-head"><div><h2 data-rv>עבודות</h2></div></div>
-      <div class="viewer">
-        <div>
-          <div class="stage" id="stage" data-rv="img">
-            <button class="icon-btn s-prev" type="button" id="sPrev" aria-label="העבודה הקודמת">›</button>
-            <button class="icon-btn s-next" type="button" id="sNext" aria-label="העבודה הבאה">‹</button>
-          </div>
-          <div class="s-info"><span class="cnt" id="sN"></span><a class="btn" id="sBook" href="#talk">רוצה משהו כזה <span class="arr">←</span></a></div>
-        </div>
-        <div class="thumbs" id="thumbs" aria-label="כל העבודות"></div>
-      </div>
+      <div class="wall" id="wall" aria-label="כל העבודות"></div>
     </div>
   </section>
 
@@ -623,8 +660,8 @@ footer.foot .cols{row-gap:6px}
           <div class="flashes" id="flashes"></div>
         </div>
       </div>
-      <div class="sec-head" style="margin-top:40px"><div><h2>שאלות</h2></div></div>
-      <div class="faq">
+      <div class="sec-head" style="margin-top:40px" data-sr><div><h2>שאלות</h2></div></div>
+      <div class="faq" data-sr>
         <details open><summary>מה קורה אחרי שפונים אליי?</summary><p>אחזור אליכם, נדבר על הרעיון ונתאם מועד. אחרי ביצוע העברת המקדמה אחזור עם אישור שהתור שוריין.</p></details>
         <details><summary>אפשר להגיע עם רעיון משלי?</summary><p>בטח. רוב הקעקועים שלי התחילו מרעיון אישי: חתימה של אבא, פטיפון של סבא וסבתא, תכשיט שהפך לסקיצה. ספרו לי את הסיפור, ואכין סקיצה בהתאם.</p></details>
         <details><summary>זה הקעקוע הראשון שלי. זה בסדר?</summary><p>לגמרי. ספרו לי שזה הקעקוע הראשון, ואתן לזה את הזמן והשיחה שצריך.</p></details>
@@ -678,6 +715,7 @@ footer.foot .cols{row-gap:6px}
       <div><b>אינסטגרם</b><a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener" class="tel" dir="ltr">@adistrug</a></div>
       <div data-email-col hidden><b>מייל</b><a class="tel" dir="ltr" data-email></a></div>
       <div><b>סטודיו</b>גבעתיים</div>
+      <div><b>ימים</b>ראשון עד שישי<br>שעות בתיאום</div>
       <div><b>מידע</b><a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
     </div>
   </div></footer>
@@ -695,6 +733,7 @@ footer.foot .cols{row-gap:6px}
   <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""><button class="icon-btn lb-prev" type="button" id="lbPrev" aria-label="הקודם">›</button><button class="icon-btn lb-next" type="button" id="lbNext" aria-label="הבא">‹</button></div>
   <div class="lb-bot"><span></span><button class="btn" type="button" id="lbBook">רוצה משהו כזה <span class="arr">←</span></button></div>
 </div>
+<a class="wa-float" href="https://wa.me/972503630384" target="_blank" rel="noopener" aria-label="וואטסאפ: לכתוב לי"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.3 2.6 2.2 4.8 5 5.6l1-1.2 1.9.9c-.2 1-1 1.7-2 1.7-3.4-.2-6.6-3.4-6.8-6.8 0-1 .7-1.8 1.7-2l.9 1.9z"/></svg><span class="tip">לכתוב לי בוואטסאפ</span></a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -746,6 +785,7 @@ const WORKS = [
  ['003','חתימה'],['049','שפירית קטנה'],['035','פלאשים'],
  ['047','קעקוע קטן'],['040','קעקוע על הזרוע']
 ].map(([id,t]) => ({id,t}));
+const RATIO = {'000':1.3333,'001':1.3333,'002':1.3333,'003':1.2033,'006':1.3333,'007':1.3333,'008':1.3333,'010':1.3333,'011':1.3333,'012':1.3333,'013':1.0189,'015':1.3333,'016':1.3333,'019':1.3333,'023':1.1022,'025':1.3333,'027':1.3333,'029':1.3333,'031':1.3333,'034':1.18,'035':1.3322,'037':1.3333,'039':1.3333,'040':1.3333,'041':1.3333,'043':1.3333,'045':1.3333,'046':1.3333,'047':1.3333,'049':1.3333,'053':1.3333,'076':1.3333,'077':1.3333,'078':1.3333,'079':1.3333,'080':1.3333,'081':1.3333,'082':1.3333};
 const src = w => w.src || `img/${w.id}.jpg`;
 const thumb = w => w.src || `img/t/${w.id}.jpg`;
 
@@ -762,7 +802,7 @@ function show(v, first){
     window.scrollTo(0,0);
     const el = $(`.view[data-view="${v}"]`); el.classList.remove('entering'); void el.offsetWidth; el.classList.add('entering');
     if(v === 'home') deckStart(); else deckStop();
-    if(v === 'work') renderViewer(false);
+    if(v === 'work') renderWall();
     if(v === 'talk') renderTicket();
   };
   if(!first && !reduce && document.startViewTransition) document.startViewTransition(apply); else apply();
@@ -783,7 +823,7 @@ function deckPaint(animate){
 }
 function deckStart(){ deckStop(); deckPaint(false); if(!reduce) dTimer = setInterval(() => { di = (di+1) % FEAT.length; deckPaint(true); }, 4600); }
 function deckStop(){ clearInterval(dTimer); dTimer = null; }
-const deckOpen = () => { wi = WORKS.indexOf(FEAT[di]); location.hash = '#work'; };
+const deckOpen = () => openLb(WORKS.indexOf(FEAT[di]), WORKS);
 $('#deck').addEventListener('click', deckOpen);
 $('#deck').addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); deckOpen(); } });
 $('.deck').addEventListener('mouseenter', () => { deckStop(); $('#deckBar').classList.remove('run'); });
@@ -796,38 +836,46 @@ $('#homeWorks').innerHTML = WORKS.slice(0,6).map((w,i) => `
     <img src="${src(w)}" alt="קעקוע: ${esc(w.t)}" loading="lazy" decoding="async">
     <span class="go" aria-hidden="true">←</span>
   </a>`).join('');
-$('#homeWorks').addEventListener('click', e => { const a = e.target.closest('[data-wid]'); if(a) wi = +a.dataset.wid; });
+$('#homeWorks').addEventListener('click', e => { const a = e.target.closest('[data-wid]'); if(!a) return; e.preventDefault(); openLb(+a.dataset.wid, WORKS); });
 
-/* ---------- work viewer ---------- */
-let wi = 0;
-function renderViewer(animateThumbs = true){
-  wi = Math.min(wi, WORKS.length-1);
-  $('#thumbs').innerHTML = WORKS.map((w,i) => `<button class="thumb${animateThumbs?' pop':''}" type="button" style="--i:${i}" data-wi="${i}" aria-current="${i===wi}" aria-label="עבודה ${i+1}: ${esc(w.t)}"><img src="${thumb(w)}" alt="" loading="lazy" decoding="async"></button>`).join('');
-  stageTo(wi, 0, true);
+/* ---------- home: photo band, slow crossfade ---------- */
+const BAND = [['000','70% 40%'],['011','55% 35%'],['008','55% 46%'],['078','40% 45%'],['023','50% 50%'],['015','50% 40%']];
+let bandN = 0, bandT = 0;
+function bandBuild(){
+  const n = innerWidth > 900 ? 3 : 1; if(n === bandN) return; bandN = n;
+  const panels = Array.from({length:n}, (_,k) => BAND.filter((_,i) => i % n === k));
+  $('#bandPh').innerHTML = panels.map(list => `<div>${list.map(([id,pos],i) => `<img src="img/${id}.jpg" alt="" loading="lazy" decoding="async" style="object-position:${pos}"${i ? '' : ' class="on"'}>`).join('')}</div>`).join('');
 }
-function stageTo(i, dir, instant){
-  const L = WORKS; wi = (i + L.length) % L.length; const w = L[wi], st = $('#stage');
-  const im = new Image(); im.src = src(w); im.alt = `קעקוע: ${w.t}`;
-  if(!instant) im.className = 'in' + (dir < 0 ? ' back' : '');
-  st.querySelectorAll('img').forEach(o => { if(instant) o.remove(); else setTimeout(() => o.remove(), 1000); });
-  st.insertBefore(im, st.querySelector('.s-prev'));
-  $('#sN').textContent = `${two(wi+1)} / ${two(L.length)}`;
-  $$('#thumbs .thumb').forEach(t => t.setAttribute('aria-current', +t.dataset.wi === wi));
-  const at = $(`#thumbs [data-wi="${wi}"]`); if(at && !instant){ const box = $('#thumbs'); const r = at.getBoundingClientRect(), b = box.getBoundingClientRect(); if(r.top < b.top || r.bottom > b.bottom || r.left < b.left || r.right > b.right) at.scrollIntoView({block:'nearest', inline:'nearest', behavior:'smooth'}); }
+bandBuild(); addEventListener('resize', bandBuild, {passive:true});
+if(!reduce) setInterval(() => { if(document.hidden || cur() !== 'home') return;
+  const panel = $$('#bandPh > div')[bandT++ % bandN]; const ims = [...panel.children]; if(ims.length < 2) return;
+  const at = ims.findIndex(im => im.classList.contains('on')); ims[at].classList.remove('on'); ims[(at+1) % ims.length].classList.add('on'); }, 4200);
+
+/* ---------- gentle reveal while scrolling ---------- */
+const io = (!reduce && 'IntersectionObserver' in window) ? new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px', threshold:.08}) : null;
+if(io) document.documentElement.classList.add('sr-on');
+function watchReveal(root){ if(!io) return; root.querySelectorAll('[data-sr]:not(.in)').forEach(el => io.observe(el)); if(root.matches?.('[data-sr]:not(.in)')) io.observe(root); }
+watchReveal(document);
+/* floating WhatsApp steps aside when the footer (which has the same links) is on screen */
+if('IntersectionObserver' in window) new IntersectionObserver(es => es.forEach(e => $('.wa-float').classList.toggle('away', e.isIntersecting))).observe($('footer.foot'));
+
+/* ---------- works wall: columns filled shortest-first, so reading order stays newest-first ---------- */
+let wallCols = 0;
+function renderWall(){
+  const n = innerWidth >= 1400 ? 4 : innerWidth > 900 ? 3 : 2;
+  if(n === wallCols && $('#wall').children.length) return; wallCols = n;
+  const cols = Array.from({length:n}, () => ({h:0, html:''}));
+  WORKS.forEach((w,i) => {
+    const r = RATIO[w.id] || 1.333, c = cols.reduce((a,b) => b.h < a.h - .01 ? b : a);
+    c.html += `<button class="tile" type="button" data-wi="${i}" data-sr style="--d:${i % n}" aria-label="פתיחה בגדול: ${esc(w.t)}"><img src="${src(w)}" alt="קעקוע: ${esc(w.t)}" width="900" height="${Math.round(900*r)}" loading="${i < n*2 ? 'eager' : 'lazy'}" decoding="async"><span class="go" aria-hidden="true">לראות בגדול</span></button>`;
+    c.h += r;
+  });
+  $('#wall').innerHTML = cols.map(c => `<div class="wall-col">${c.html}</div>`).join('');
+  watchReveal($('#wall'));
 }
-$('#thumbs').addEventListener('click', e => { const b = e.target.closest('[data-wi]'); if(!b) return; const n = +b.dataset.wi; if(n !== wi) stageTo(n, n > wi ? 1 : -1); });
-$('#sNext').addEventListener('click', e => { e.stopPropagation(); stageTo(wi+1, 1); });
-$('#sPrev').addEventListener('click', e => { e.stopPropagation(); stageTo(wi-1, -1); });
-$('#stage').addEventListener('click', e => { if(e.target.closest('.icon-btn')) return; if(swiped) return; openLb(wi, WORKS); });
-let sx = null, swiped = false;
-$('#stage').addEventListener('pointerdown', e => { sx = e.clientX; swiped = false; });
-$('#stage').addEventListener('pointerup', e => { if(sx === null) return; const dx = e.clientX - sx; sx = null; if(Math.abs(dx) > 50){ swiped = true; setTimeout(() => swiped = false, 50); stageTo(wi + (dx > 0 ? 1 : -1), dx > 0 ? 1 : -1); } });
-document.addEventListener('keydown', e => {
-  if(!$('#lb').hidden || cur() !== 'work' || /input|textarea/i.test(document.activeElement.tagName)) return;
-  if(e.key === 'ArrowLeft') stageTo(wi+1, 1); if(e.key === 'ArrowRight') stageTo(wi-1, -1);
-});
+$('#wall').addEventListener('click', e => { const b = e.target.closest('[data-wi]'); if(b) openLb(+b.dataset.wi, WORKS); });
+addEventListener('resize', () => { if(cur() === 'work') renderWall(); }, {passive:true});
 const inspired = i => `בהשראת עבודה מס׳ ${i+1} מהאתר: `;
-$('#sBook').addEventListener('click', () => { setMode('idea'); prefill(inspired(wi)); });
 $('#flashBtn').onclick = () => { setMode('flash'); location.hash = '#talk'; setTimeout(() => $('#flash').focus({preventScroll:true}), 500); };
 function prefill(text){ const idea = $('#idea'); idea.value = text + idea.value.replace(/^בהשראת עבודה מס׳ \d+ מהאתר: /, ''); renderTicket(); }
 
@@ -841,7 +889,7 @@ function paintLb(){
   $('#lbPrev').hidden = $('#lbNext').hidden = lbList.length < 2;
   img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
 }
-function closeLb(){ $('#lb').hidden = true; document.body.style.overflow = ''; if(cur() === 'work') stageTo(lbI, 0, true); lbFocus?.focus?.(); }
+function closeLb(){ $('#lb').hidden = true; document.body.style.overflow = ''; lbFocus?.focus?.(); }
 const lbStep = d => { lbI = (lbI + d + lbList.length) % lbList.length; paintLb(); };
 $('#lbClose').onclick = closeLb; $('#lbNext').onclick = () => lbStep(1); $('#lbPrev').onclick = () => lbStep(-1);
 $('#lb').addEventListener('click', e => { if(e.target.id === 'lbStage') closeLb(); });
@@ -980,7 +1028,7 @@ function resetTalk(){
 
 /* ---------- boot ---------- */
 if(['#book','#admin'].includes(location.hash)) history.replaceState(null, '', '#' + cur());
-setMode('idea'); renderViewer(false); show(cur(), true);
+setMode('idea'); show(cur(), true);
 })();
 </script>
 
