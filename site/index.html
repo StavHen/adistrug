@@ -370,7 +370,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .sheet{background:#e9e3da;padding:14px;transform:rotate(1.6deg);box-shadow:0 30px 70px rgba(0,0,0,.5);transition:transform .8s var(--ease)}
 .sheet:hover{transform:rotate(0) scale(1.01)}
 .flashes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.flashes button{display:block;padding:0;border:0;background:#e9e3da;cursor:zoom-in;aspect-ratio:1/1.414;overflow:hidden;border-radius:var(--r);box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.flashes button{display:block;padding:0;border:0;background:#f4f0ea;cursor:zoom-in;aspect-ratio:3/4;overflow:hidden;border-radius:var(--r);box-shadow:0 10px 26px rgba(0,0,0,.25)}
 .flashes img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
 .flashes button:hover img{transform:scale(1.04)}
 .flashes button:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
@@ -385,10 +385,11 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
   .flashes{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 }
 @media (min-width:1400px){.flashes{grid-template-columns:repeat(6,minmax(0,1fr))}}
-@media (min-width:901px){.flash-cap p{max-width:none}.faq{max-width:none}}
+@media (min-width:901px){div.flash-cap p{max-width:none}.faq{max-width:none}}
 .flash-cap{margin-bottom:22px}
 .flash-cap h3{font-size:calc(30px * var(--fs-big));margin-bottom:8px}
 .flash-cap p{color:var(--bone-2);font-weight:400;margin-bottom:18px;max-width:40ch}
+.flash-cap p a{white-space:nowrap}
 .faq{max-width:900px;border-top:1px solid var(--line);margin-bottom:80px}
 .legal{max-width:68ch;margin-bottom:80px;display:flex;flex-direction:column;gap:26px}
 .legal h3{font-size:calc(22px * var(--fs));margin-bottom:6px}
@@ -852,9 +853,9 @@ $('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overf
   if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); location.hash = '#talk'; setTimeout(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }, 500); return; }
   setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
 /* ---------- flashes (sheets Adi sent) ---------- */
-const FLASHES = [...Array.from({length:11}, (_, i) => { const n = String(i+1).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; }), {src:'img/076.jpg', th:'img/t/076.jpg'}]
+const FLASHES = [...Array.from({length:12}, (_, i) => { const n = String(i+1).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })]
   .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
-$('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="509"></button>`).join('');
+$('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
 $('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
 
 /* ---------- helpers ---------- */
