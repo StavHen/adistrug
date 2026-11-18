@@ -251,6 +251,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .step h3{font-size:calc(25px * var(--fs));margin-block:14px 8px}
 .step p{color:var(--mute);font-size:calc(15.5px * var(--fs));max-width:28ch}
 @media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:28px}.step:nth-child(3){border-inline-start:0;padding-inline-start:0}}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .rcard{display:grid;place-items:center;padding:26px 22px;border:1px solid var(--line);border-radius:22px;background:var(--ink-2)}
 .rmsg{width:min(100%, calc(var(--w) * var(--k,.8) * 1px));margin:0;padding:4px;background:#fff;border-radius:18px;box-shadow:0 10px 24px rgba(20,16,12,.16),0 1px 2px rgba(20,16,12,.1)}
@@ -625,7 +626,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
   <!-- REVIEWS -->
   <section class="view" data-view="reviews" hidden>
     <div class="wrap">
-      <div class="page-head"><div><h2 data-rv>המלצות</h2><p class="lead" data-rv>הודעות שקיבלתי מלקוחות אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
+      <div class="page-head"><div><h2 class="sr-only">המלצות</h2><p class="lead" data-rv>הודעות שקיבלתי מלקוחות אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
       <div class="revs" id="allRevs"></div>
       <div style="height:80px"></div>
     </div>
