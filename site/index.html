@@ -13,16 +13,16 @@
 <meta name="apple-mobile-web-app-title" content="Adi Strug">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
-<meta property="og:site_name" content="Adi Strug Tattoo">
+<meta property="og:site_name" content="Adi Strug Tattoos">
 <meta property="og:title" content="Adi Strug · קעקועים בקו עדין, גבעתיים">
 <meta property="og:description" content="עבורי קעקוע הוא הרבה מעבר לתוצאה שעל העור. עבודות, פלאשים זמינים ודרך ליצור קשר.">
 <meta property="og:url" content="https://adistrug.netlify.app/">
 <meta property="og:image" content="https://adistrug.netlify.app/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Adi Strug Tattoo, קעקוע פרחים בקו דק על הזרוע">
+<meta property="og:image:alt" content="Adi Strug Tattoos, קעקוע פרחים בקו דק על הזרוע">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TattooParlor","name":"Adi Strug Tattoo","url":"https://adistrug.netlify.app/","image":"https://adistrug.netlify.app/og.jpg","logo":"https://adistrug.netlify.app/icon-512.png","address":{"@type":"PostalAddress","addressLocality":"גבעתיים","addressCountry":"IL"},"sameAs":["https://www.instagram.com/adistrug/"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TattooParlor","name":"Adi Strug Tattoos","url":"https://adistrug.netlify.app/","image":"https://adistrug.netlify.app/og.jpg","logo":"https://adistrug.netlify.app/icon-512.png","address":{"@type":"PostalAddress","addressLocality":"גבעתיים","addressCountry":"IL"},"sameAs":["https://www.instagram.com/adistrug/"]}</script>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Adi Strug · קעקועים בקו עדין, גבעתיים</title>
 <script>try{var t=localStorage.getItem('adistrug-theme'),x=localStorage.getItem('adistrug-text');if(t==='light')document.documentElement.dataset.theme=t;if(x==='large')document.documentElement.dataset.text='large';}catch(e){}</script>
@@ -92,6 +92,16 @@ h1,h2,h3{font-family:var(--display);font-weight:var(--dweight);margin:0;line-hei
 h2{font-size:calc(clamp(34px,4.6vw,60px) * var(--fs-big))}
 p{margin:0}
 .wrap{max-width:1280px;margin-inline:auto;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}
+/* wide screens: use the width (Stav, 18.11) */
+@media (min-width:1400px){
+  .wrap{max-width:1640px;padding-left:max(56px,4vw);padding-right:max(56px,4vw)}
+  :root{--fs:1.1;--fs-big:1.08}
+  .hero .wrap{gap:clamp(64px,6vw,120px)}
+  .deck{max-width:620px;max-height:76vh}
+  .next{max-width:640px}
+  .portrait{width:clamp(220px,15vw,280px)!important;height:auto!important}
+}
+@media (min-width:1800px){:root{--fs:1.18;--fs-big:1.12}.deck{max-width:680px}}
 .latin{font-family:var(--latin);font-style:var(--lstyle)}
 .muted{color:var(--mute)}
 .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:calc(12.5px * var(--fs));letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
@@ -349,6 +359,9 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .info{display:grid;gap:0;border-top:1px solid var(--line)}
 .info > div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:20px;padding-block:24px;border-bottom:1px solid var(--line)}
 .info h3{font-size:calc(28px * var(--fs-big))}
+.info .pin{display:flex;align-items:center;gap:8px;margin:0;font-size:calc(17px * var(--fs))}
+.info .pin svg{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5}
+.info .pin-note{margin:4px 0 0;color:var(--mute);font-size:calc(15px * var(--fs))}
 .info dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:calc(15.5px * var(--fs))}
 .info dt{color:var(--mute)}
 .info dd{margin:0;font-variant-numeric:tabular-nums}
@@ -356,9 +369,27 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .tag{display:inline-block;font-family:var(--body);font-size:calc(10.5px * var(--fs));letter-spacing:.1em;border:1px solid var(--line-strong);color:var(--mute);border-radius:999px;padding:1px 8px;vertical-align:middle}
 .sheet{background:#e9e3da;padding:14px;transform:rotate(1.6deg);box-shadow:0 30px 70px rgba(0,0,0,.5);transition:transform .8s var(--ease)}
 .sheet:hover{transform:rotate(0) scale(1.01)}
-.flash-cap{margin-top:30px}
+.flashes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.flashes button{display:block;padding:0;border:0;background:#f4f0ea;cursor:zoom-in;aspect-ratio:3/4;overflow:hidden;border-radius:var(--r);box-shadow:0 10px 26px rgba(0,0,0,.25)}
+.flashes img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.flashes button:hover img{transform:scale(1.04)}
+.flashes button:focus-visible{outline:2px solid var(--bone);outline-offset:3px}
+/* desktop: studio info as one row, flashes full width (Stav, 18.11) */
+@media (min-width:901px){
+  .studio-grid{grid-template-columns:1fr;gap:56px}
+  .info{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:48px;border-top:0}
+  .info > div{grid-template-columns:1fr;gap:14px;border-top:1px solid var(--line);border-bottom:0}
+  .flash-cap{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px 32px}
+  .flash-cap h3,.flash-cap p{grid-column:1}
+  .flash-cap .btn{grid-column:2;grid-row:1 / span 2;align-self:center}
+  .flashes{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+}
+@media (min-width:1400px){.flashes{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (min-width:901px){div.flash-cap p{max-width:none}.faq{max-width:none}}
+.flash-cap{margin-bottom:22px}
 .flash-cap h3{font-size:calc(30px * var(--fs-big));margin-bottom:8px}
 .flash-cap p{color:var(--bone-2);font-weight:400;margin-bottom:18px;max-width:40ch}
+.flash-cap p a{white-space:nowrap}
 .faq{max-width:900px;border-top:1px solid var(--line);margin-bottom:80px}
 .legal{max-width:68ch;margin-bottom:80px;display:flex;flex-direction:column;gap:26px}
 .legal h3{font-size:calc(22px * var(--fs));margin-bottom:6px}
@@ -422,7 +453,10 @@ footer.foot .cols b{display:block;color:var(--bone);font-weight:400}
 .next-main b{font-weight:300}
 .next-more a{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0}
 .next-more a b{font-weight:400}
-.next-more a .tel{font-size:calc(13px * var(--fs));overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.next-more a .tel{font-size:calc(16px * var(--fs));overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.next-more a{padding:18px 10px;gap:6px}
+.next-more a b{display:flex;align-items:center;gap:8px;font-size:calc(18px * var(--fs))}
+.next-more a b svg{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:560px){.about{flex-direction:column;text-align:center;gap:20px}.quote{max-width:none}.portrait{width:min(62vw,240px)}}
 .s-info{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:16px;flex-wrap:wrap}
 .s-info .cnt{font-family:var(--latin);font-size:calc(24px * var(--fs-big));color:var(--skin);font-variant-numeric:tabular-nums}
@@ -432,6 +466,9 @@ footer.foot .cols b{display:block;color:var(--bone);font-weight:400}
 .flash-cap h3{text-wrap:balance}
 .info dd a{color:inherit;text-underline-offset:3px}
 footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
+/* bigger tap areas for small text links (phone) */
+footer.foot .cols a,a.more,.logo{display:inline-block;padding-block:9px}
+footer.foot .cols{row-gap:6px}
 .btn,.chip[aria-pressed="true"]{font-weight:400}
 .nw{white-space:nowrap}
 .lead,.quote{text-wrap:pretty}
@@ -441,12 +478,12 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
 #homeWorks .cat img{filter:none}
 </style>
 
-<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><span class="intro-name">Adi Strug</span><span class="intro-line"></span><span class="intro-sub">TATTOO · GIVATAYIM</span></div></div>
+<div class="intro" id="intro" aria-hidden="true"><div class="intro-in"><span class="intro-name">Adi Strug</span><span class="intro-line"></span><span class="intro-sub">TATTOOS · GIVATAYIM</span></div></div>
 
 <div id="app" dir="rtl" lang="he">
 
   <header class="top" id="hdr"><div class="wrap">
-    <a class="logo" href="#home">Adi Strug<small>TATTOO</small></a>
+    <a class="logo" href="#home">Adi Strug<small>TATTOOS</small></a>
     <nav class="links" aria-label="ניווט ראשי">
       <a href="#home" data-nav="home">בית</a>
       <a href="#work" data-nav="work">עבודות</a>
@@ -482,7 +519,7 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
         <div class="hero-text">
           <h1 class="sr">Adi Strug, מקעקעת בגבעתיים</h1>
           <figure class="about" data-rv>
-            <div class="portrait"><img src="img/adi-3.jpg" alt="Adi Strug מקעקעת בסטודיו" width="800" height="800" fetchpriority="high"></div>
+            <div class="portrait"><img src="img/adi-4.jpg" alt="Adi Strug מקעקעת בסטודיו" width="800" height="800" fetchpriority="high"></div>
             <figcaption class="quote">עבורי קעקוע הוא הרבה מעבר לתוצאה שעל העור. הוא תהליך אישי שמתחיל בשיחה, בהיכרות ובהקשבה לסיפור ולרעיון שמאחוריו.</figcaption>
           </figure>
           <div class="next" data-rv>
@@ -546,7 +583,7 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
               <button type="button" class="chip" data-mode="flash" aria-pressed="false">פלאש זמין</button>
             </div>
             <div class="field" id="f-idea" data-for="idea"><label for="idea">הרעיון</label><textarea id="idea" placeholder="למשל: ענף זית עדין בקו דק, עם המילה ״בית״ בכתב יד"></textarea><span class="err"></span></div>
-            <div class="field" id="f-flash" data-for="flash" hidden><label for="flash">איזה פלאש?</label><input id="flash" type="text" placeholder="למשל: המפתח השני מימין בדף המנעולים"><span class="err"></span></div>
+            <div class="field" id="f-flash" data-for="flash" hidden><label for="flash">איזה פלאש?</label><input id="flash" type="text" placeholder="למשל: הלימונים, מדף מס׳ 5"><span class="err"></span></div>
             <div class="field" id="f-place"><span class="flabel">מיקום בגוף</span><div class="choices" data-group="placement"></div><span class="err"></span></div>
             <div class="field" id="f-size"><span class="flabel">גודל משוער</span><div class="choices sizes" data-group="size"></div><span class="err"></span></div>
             <div class="field" data-for="idea"><span class="flabel">תמונת רפרנס <span class="opt">(במידה ויש)</span></span>
@@ -577,13 +614,13 @@ footer.foot .cols a{color:var(--bone);text-underline-offset:3px}
       <div class="page-head"><div><h2 data-rv>סטודיו</h2></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
       <div class="studio-grid">
         <div class="info" data-rv>
-          <div><h3>איפה</h3><dl><dt>עיר</dt><dd>גבעתיים</dd><dt>כתובת</dt><dd>נשלחת אחרי שריון התור</dd></dl></div>
+          <div><h3>איפה</h3><div><p class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>גבעתיים</p><p class="pin-note">הכתובת תישלח בתיאום התור</p></div></div>
           <div><h3>מתי</h3><dl><dt>ימים</dt><dd>ראשון עד שישי</dd><dt>שעות</dt><dd>בתיאום מולי</dd></dl></div>
           <div><h3>דברו איתי</h3><dl data-contacts-dl></dl></div>
         </div>
         <div data-rv>
-          <div class="sheet"><img src="img/076.jpg" alt="דף פלאשים: מנעולים ומפתחות" loading="lazy"></div>
-          <div class="flash-cap"><h3>פלאשים זמינים שמחפשים בית חם</h3><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
+          <div class="flash-cap"><h3>פלאשים זמינים שמחפשים בית חם</h3><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
+          <div class="flashes" id="flashes"></div>
         </div>
       </div>
       <div class="sec-head" style="margin-top:40px"><div><h2>שאלות</h2></div></div>
@@ -682,8 +719,13 @@ const CONTACTS = [
   {k:'ig', l:'אינסטגרם', v:'@'+INSTA, href:`https://www.instagram.com/${INSTA}/`},
   ...(EMAIL ? [{k:'mail', l:'מייל', v:EMAIL, href:`mailto:${EMAIL}`}] : [])
 ];
+const ICON = {
+  wa:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 19.5l1.1-3.6A8 8 0 1 1 8.4 18.6z"/><path d="M9.2 8.6c.3 2.6 2.2 4.8 5 5.6l1-1.2 1.9.9c-.2 1-1 1.7-2 1.7-3.4-.2-6.6-3.4-6.8-6.8 0-1 .7-1.8 1.7-2l.9 1.9z"/></svg>',
+  ig:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6"/></svg>',
+  mail:''
+};
 const ext = c => c.k === 'mail' ? '' : ' target="_blank" rel="noopener"';
-$$('[data-contacts]').forEach(el => el.innerHTML = CONTACTS.map(c => `<a href="${c.href}"${ext(c)}><b>${c.l}</b><span class="tel" dir="ltr">${esc(c.v)}</span></a>`).join(''));
+$$('[data-contacts]').forEach(el => el.innerHTML = CONTACTS.map(c => `<a href="${c.href}"${ext(c)}><b>${ICON[c.k]}${c.l}</b><span class="tel" dir="ltr">${esc(c.v)}</span></a>`).join(''));
 $$('[data-contacts-inline]').forEach(el => el.innerHTML = CONTACTS.map(c => `<a href="${c.href}"${ext(c)}>${c.l}</a>`).join(' · '));
 $$('[data-contacts-dl]').forEach(el => el.innerHTML = CONTACTS.map(c => `<dt>${c.l}</dt><dd><a href="${c.href}"${ext(c)} class="tel" dir="ltr">${esc(c.v)}</a></dd>`).join(''));
 if(EMAIL){ $$('[data-email]').forEach(a => { a.href = `mailto:${EMAIL}`; a.textContent = EMAIL; }); $$('[data-email-col]').forEach(d => d.hidden = false); }
@@ -791,9 +833,10 @@ function prefill(text){ const idea = $('#idea'); idea.value = text + idea.value.
 
 /* ---------- lightbox ---------- */
 let lbList = [], lbI = 0, lbFocus = null;
-function openLb(i, list){ lbList = list; lbI = i; lbFocus = document.activeElement; $('#lb').hidden = false; document.body.style.overflow = 'hidden'; paintLb(); $('#lbClose').focus(); }
+let lbKind = 'work';
+function openLb(i, list, kind){ lbKind = kind || 'work'; $('#lbBook').innerHTML = (lbKind === 'flash' ? 'אני רוצה את הפלאש הזה' : 'רוצה משהו כזה') + ' <span class="arr">←</span>'; $('#lb').setAttribute('aria-label', lbKind === 'flash' ? 'תצוגת פלאשים' : 'תצוגת עבודה'); lbList = list; lbI = i; lbFocus = document.activeElement; $('#lb').hidden = false; document.body.style.overflow = 'hidden'; paintLb(); $('#lbClose').focus(); }
 function paintLb(){
-  const w = lbList[lbI], img = $('#lbImg'); img.src = src(w); img.alt = `קעקוע: ${w.t}`;
+  const w = lbList[lbI], img = $('#lbImg'); img.src = src(w); img.alt = w.alt || `קעקוע: ${w.t}`;
   $('#lbCount').textContent = lbList.length > 1 ? `${two(lbI+1)} / ${two(lbList.length)}` : '';
   $('#lbPrev').hidden = $('#lbNext').hidden = lbList.length < 2;
   img.style.animation = 'none'; void img.offsetWidth; img.style.animation = '';
@@ -806,7 +849,14 @@ document.addEventListener('keydown', e => { if($('#lb').hidden) return; if(e.key
 let lx = null;
 $('#lbStage').addEventListener('pointerdown', e => lx = e.clientX);
 $('#lbStage').addEventListener('pointerup', e => { if(lx === null) return; const dx = e.clientX - lx; lx = null; if(Math.abs(dx) > 50 && lbList.length > 1) lbStep(dx > 0 ? 1 : -1); });
-$('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overflow = ''; setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
+$('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overflow = '';
+  if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); location.hash = '#talk'; setTimeout(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }, 500); return; }
+  setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
+/* ---------- flashes (sheets Adi sent) ---------- */
+const FLASHES = [...Array.from({length:12}, (_, i) => { const n = String(i+1).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })]
+  .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
+$('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
+$('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
 
 /* ---------- helpers ---------- */
 function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('סמנו והעתיקו'); }
