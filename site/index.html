@@ -242,7 +242,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .cat .go{position:absolute;top:14px;inset-inline-end:14px;z-index:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--latin);font-size:calc(18px * var(--fs));opacity:0;transform:translateY(-6px);transition:all .5s var(--ease);background:rgba(16,15,13,.5)}
 .cat:hover .go{opacity:1;transform:none}
 @media (max-width:1000px){.cat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0 58%;scroll-snap-align:start}}
+@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0.74%;scroll-snap-align:start}}
 
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .step{padding:26px 0 0;padding-inline-start:26px;border-inline-start:1px solid var(--line)}
@@ -251,6 +251,16 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .step h3{font-size:calc(25px * var(--fs));margin-block:14px 8px}
 .step p{color:var(--mute);font-size:calc(15.5px * var(--fs));max-width:28ch}
 @media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:28px}.step:nth-child(3){border-inline-start:0;padding-inline-start:0}}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rcard{display:grid;place-items:center;padding:26px 22px;border:1px solid var(--line);border-radius:22px;background:var(--ink-2)}
+.rmsg{width:min(100%, calc(var(--w) * var(--k,.8) * 1px));margin:0;padding:4px;background:#fff;border-radius:18px;box-shadow:0 10px 24px rgba(20,16,12,.16),0 1px 2px rgba(20,16,12,.1)}
+.rmsg img{display:block;width:100%;height:auto;border-radius:14px}
+.revs.home .rcard:nth-child(n+4){display:none}
+@media (max-width:1000px){.revs{grid-template-columns:repeat(2,minmax(0,1fr))}.revs.home .rcard:nth-child(n+3){display:none}}
+@media (max-width:640px){.revs{grid-template-columns:1fr;gap:14px}.rcard{padding:20px 16px}
+.revs.home{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.revs.home::-webkit-scrollbar{display:none}.revs.home .rcard{flex:0 0 86%;scroll-snap-align:center}.revs.home .rcard:nth-child(n){display:grid}.revs.home .rcard:nth-child(n+7){display:none}}
+.revs-note{color:var(--mute);font-size:calc(14px * var(--fs));margin-top:10px}
 .home-cta{margin-top:56px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding:34px;border:1px solid var(--line-strong);background:var(--ink-2)}
 .home-cta h3{font-size:calc(clamp(30px,3.6vw,44px) * var(--fs-big))}
 
@@ -527,6 +537,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <nav class="links" aria-label="ניווט ראשי">
       <a href="#home" data-nav="home">בית</a>
       <a href="#work" data-nav="work">עבודות</a>
+      <a href="#reviews" data-nav="reviews">המלצות</a>
       <a href="#studio" data-nav="studio">סטודיו</a>
     </nav>
     <a class="btn sm cta" href="#talk">בואו נדבר <span class="arr">←</span></a>
@@ -550,8 +561,8 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
   <section class="view" data-view="home">
     <div class="hero">
       <svg class="stem" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M1240 640 C 1080 590, 980 660, 860 580 S 700 400, 560 440 S 360 580, 240 450 S 120 180, -40 140"/>
-        <path d="M860 580 c -30 -50 -10 -100 40 -120 c 10 50 -10 95 -40 120 z"/>
+        <path d="M1240 640 C 1080 590, 980 660, 860.740 S 700 400, 560 440 S 360 580, 240 450 S 120 180, -40 140"/>
+        <path d="M860.740 c -30 -50 -10 -100 40 -120 c 10 50 -10 95 -40 120 z"/>
         <path d="M560 440 c 10 -60 55 -90 105 -85 c -15 50 -55 85 -105 85 z"/>
         <path d="M240 450 c -55 -20 -75 -70 -60 -115 c 45 25 65 70 60 115 z"/>
       </svg>
@@ -591,6 +602,10 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
         <div class="step"><div class="num">4</div><h3>סקיצה וקעקוע</h3><p>נפגשים, מדייקים יחד את הסקיצה והמיקום, ומתחילים.</p></div>
       </div>
     </div>
+    <div class="wrap home-sec">
+      <div class="sec-head" data-sr><div><h2>המלצות</h2></div><a class="more" href="#reviews">לכל ההמלצות <span class="arr">←</span></a></div>
+      <div class="revs home" id="homeRevs" data-sr></div>
+    </div>
     <div class="band" data-sr>
       <div class="band-ph" id="bandPh" aria-hidden="true"></div>
       <div class="band-in">
@@ -605,6 +620,15 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <div class="wrap">
       <div class="page-head"><div><h2 data-rv>עבודות</h2></div></div>
       <div class="wall" id="wall" aria-label="כל העבודות"></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="view" data-view="reviews" hidden>
+    <div class="wrap">
+      <div class="page-head"><div><h2 class="sr-only">המלצות</h2><p class="lead" data-rv>הודעות שקיבלתי מלקוחות אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
+      <div class="revs" id="allRevs"></div>
+      <div style="height:80px"></div>
     </div>
   </section>
 
@@ -716,7 +740,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       <div data-email-col hidden><b>מייל</b><a class="tel" dir="ltr" data-email></a></div>
       <div><b>סטודיו</b>גבעתיים</div>
       <div><b>ימים</b>ראשון עד שישי<br>שעות בתיאום</div>
-      <div><b>מידע</b><a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
+      <div><b>מידע</b><a href="#reviews">המלצות</a> · <a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
     </div>
   </div></footer>
 
@@ -790,7 +814,7 @@ const src = w => w.src || `img/${w.id}.jpg`;
 const thumb = w => w.src || `img/t/${w.id}.jpg`;
 
 /* ---------- router ---------- */
-const VIEWS = ['home','work','talk','studio','privacy','accessibility'];
+const VIEWS = ['home','work','reviews','talk','studio','privacy','accessibility'];
 const ALIAS = {book:'talk', admin:'home'};
 const cur = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : (ALIAS[h] || 'home'); };
 $$('.view').forEach(v => v.querySelectorAll('[data-rv]').forEach((el,i) => el.style.setProperty('--i', i)));
@@ -905,6 +929,17 @@ const FLASHES = [...Array.from({length:12}, (_, i) => { const n = String(i+1).pa
   .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
 $('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
 $('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
+
+/* ---------- reviews: screenshots of clients' messages ---------- */
+const REV_K = [1.0, 0.7, 0.8, 0.72, 0.8, 0.72, 0.7, 0.8, 1.0, 0.8, 0.72, 0.8, 0.7, 0.72, 0.72, 0.8, 1.0, 0.8, 0.72, 0.74, 1.0, 0.72, 0.8, 0.8, 0.72, 0.7, 0.72, 0.7, 0.8, 1.0, 1.0];
+const REVIEWS = [{"w":306,"h":152,"t":"היי שלום, רציתי להגיד לך שהיה פשוט מדהים! הכל! המקום, המוזיקה וכמובן הקעקוע. בנעימות ומקצועיות שלא נתקלים. יצא פשוט מדהים, תודה ענקית!!!"},{"w":399,"h":113,"t":"תקשיבי את פשוט מדהימה ❤️ המון תודה על המקצועיות, התמיכה והכי חשוב העבודה המדהימה"},{"w":430,"h":117,"t":"איזה מרגש את לא מבינה איך קמתי בקלות היום כי זה לקום ליום של קעקוע"},{"w":417,"h":171,"t":"אהובתי, אני כ״כ אוהבת אותך, תודה! וגם על האנרגיות הטובות שלך והרוגע שהשרית עליי ❤️ ועכשיו, איפה התמונות שלי? תשלחי... אני רוצה להשוויץ"},{"w":372,"h":76,"t":"מחלים קטלני ורציתי להגיד לך תודה רבה ושאני אוהב אותו המון"},{"w":442,"h":102,"t":"וואי תקשיבי תודה ענקית ומטורפת, זה מדהים אני ממש מתה על זה"},{"w":437,"h":89,"t":"נהננו כל-כך מהחוויה איתך, משמעותית ומרגשת בטירוף"},{"w":367,"h":807,"t":"מכתב תודה: ביום שישי הגענו אלייך לרגל יום ההולדת כדי לעשות קעקוע משותף של אמא ובת. קודם כל, איזה כיף שזכינו להגיע דווקא אלייך! המקצועיות, הסבלנות, הדיוק והיחס המקסים שלך פשוט עשו את החוויה למושלמת. תודה על הכל, היה לנו כיף, אין ספק שיצאנו עם הרבה יותר מקעקוע"},{"w":326,"h":115,"t":"ואני שוב רוצה להודות לך על הקעקוע המושלם שלי, על ההשקעה וההתמדה שלך בפרטים הכי קטנים ושבכללי הפכת את זה לחוויה נעימה ❤️"},{"w":382,"h":79,"t":"מושלםםם אין עלייך באמת, שמחה שבחרתי בך"},{"w":420,"h":130,"t":"אני כל כך שמחה שאת עשית לי חוויה כל כך טובה לקעקוע הראשון, כי אני הייתי בלחץ מזה ואת גרמת לי להנות ולזמן לעוף"},{"w":357,"h":76,"t":"היה שווה להתעכב עוד כמה דקות על המיקומים, וואי איך אני מרוצה"},{"w":381,"h":82,"t":"תודה רבה לך את הכי מושלמת, עפו עלייך ועל הקעקועים"},{"w":385,"h":92,"t":"מתוקה שלי, אני כ״כ אוהבת את זה, שחושבת לעצמי איך לא עשיתי את זה קודם"},{"w":410,"h":196,"t":"אני רק אספר לך שמאמן אחד שאני עובדת איתו וחברה שלי שראו את הקעקוע כבר שאלו אצל מי עשיתי, והלכו לבדוק את העמוד שלך. רק שתדעי שאת עושה עבודה מטורפת"},{"w":417,"h":77,"t":"הוא מחלים מדהים, תקשיבי אני מתה עליו ברמות"},{"w":286,"h":75,"t":"היה לי כיף בטירוף והקעקוע כל כך יפה, לא מפסיקה להסתכל עליו, את מושלמת!!!"},{"w":363,"h":74,"t":"היה מושלם היום!!! באמת נהניתי ממש, תשלחי את הסלפי מהמקלט"},{"w":366,"h":73,"t":"הקעקוע יצא ממש עדין, יפה ומשתלב בגוף"},{"w":248,"h":79,"t":"תודה רבה יצא ממש מושלם! וואי ממש את אלופה בחיי"},{"w":302,"h":63,"t":"כן נראה ממש טוב. ממש תודה, היה תענוג כל התהליך"},{"w":322,"h":67,"t":"נהניתי ממש עדי, אין עלייך, תודה על הקעקוע, יצא מדהים"},{"w":407,"h":125,"t":"וואי עדי זה נראה פשוט מושלם בול כמו שיצאתי ממך, לא יאומן אני אשלח לך תמונה"},{"w":317,"h":70,"t":"מאוהבת בחבר החדש שלי על הגב"},{"w":400,"h":110,"t":"היה מדהים לראות אותך ולהתעדכן, את באמת גרמת לזה להיות כל כך כיף ורגוע, זה מדהים!!!"},{"w":374,"h":65,"t":"החלמה מטורפת! הקעקוע מושלם ברמות"},{"w":341,"h":140,"t":"שומעת שכנה ראתה אותי במעלית עכשיו ודפקה לי איזה קעקועים מגניבים יש לך, כל מה שהיא ראתה היו שלך"},{"w":330,"h":64,"t":"מלא תודה עדי, הקעקוע מושלם ברמות!!! היה ממש כיף לראות אותך"},{"w":294,"h":105,"t":"מושלם!!!!! מחכה לבוא לארץ להתקעקע אצלך גם"},{"w":303,"h":59,"t":"ממש תודה לך, הייתה לנו חוויה מהממת"},{"w":303,"h":188,"t":"אני אגיד לך באמת תודה ממש, היה סופר נעים וכיף ואני מבסוט מאוד מהעבודה, ואת מאוד הכי נחמדה. בטוח שאני אחזור אלייך בקרוב, וואלה ממש תודה"}].map((r, i) => ({...r, k:REV_K[i], src:`img/reviews/${String(i+1).padStart(2,'0')}.jpg`}));
+const revHTML = list => list.map(r => `<div class="rcard"><figure class="rmsg" style="--w:${r.w};--k:${r.k}"><img src="${r.src}" alt="${esc('הודעה מלקוח: ' + r.t)}" loading="lazy" width="${r.w}" height="${r.h}"></figure></div>`).join('');
+const REV_SHOW = [1,4,3, 2,11,15, 9,6,23, 27,5,7, 13,14,17, 12,16,19, 21,22,10, 26,20,24, 28,31,30].map(n => REVIEWS[n-1]);
+const LETTER = REVIEWS[7];
+const letterHTML = () => [['a',287],['b',176],['c',176]].map(([n,h], i) => `<div class="rcard"><figure class="rmsg" style="--w:387;--k:.82"><img src="img/reviews/08${n}.jpg" alt="${i ? '' : esc('מכתב מלקוחה: ' + LETTER.t)}" loading="lazy" width="387" height="${h}"></figure></div>`).join('');
+$('#homeRevs').innerHTML = revHTML(REV_SHOW.slice(0, 6));
+$('#allRevs').innerHTML = revHTML(REV_SHOW) + letterHTML();
+
 
 /* ---------- helpers ---------- */
 function selectText(el){ const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); toast('סמנו והעתיקו'); }
