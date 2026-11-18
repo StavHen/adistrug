@@ -242,7 +242,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .cat .go{position:absolute;top:14px;inset-inline-end:14px;z-index:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--latin);font-size:calc(18px * var(--fs));opacity:0;transform:translateY(-6px);transition:all .5s var(--ease);background:rgba(16,15,13,.5)}
 .cat:hover .go{opacity:1;transform:none}
 @media (max-width:1000px){.cat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0.74%;scroll-snap-align:start}}
+@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0 74%;scroll-snap-align:start}}
 
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .step{padding:26px 0 0;padding-inline-start:26px;border-inline-start:1px solid var(--line)}
