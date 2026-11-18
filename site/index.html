@@ -242,7 +242,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .cat .go{position:absolute;top:14px;inset-inline-end:14px;z-index:1;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-strong);display:grid;place-items:center;font-family:var(--latin);font-size:calc(18px * var(--fs));opacity:0;transform:translateY(-6px);transition:all .5s var(--ease);background:rgba(16,15,13,.5)}
 .cat:hover .go{opacity:1;transform:none}
 @media (max-width:1000px){.cat-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0.74%;scroll-snap-align:start}}
+@media (max-width:560px){.cat-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.cat-grid::-webkit-scrollbar{display:none}.cat{flex:0 0 58%;scroll-snap-align:start}}
 
 .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .step{padding:26px 0 0;padding-inline-start:26px;border-inline-start:1px solid var(--line)}
@@ -561,8 +561,8 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
   <section class="view" data-view="home">
     <div class="hero">
       <svg class="stem" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <path d="M1240 640 C 1080 590, 980 660, 860.740 S 700 400, 560 440 S 360 580, 240 450 S 120 180, -40 140"/>
-        <path d="M860.740 c -30 -50 -10 -100 40 -120 c 10 50 -10 95 -40 120 z"/>
+        <path d="M1240 640 C 1080 590, 980 660, 860 580 S 700 400, 560 440 S 360 580, 240 450 S 120 180, -40 140"/>
+        <path d="M860 580 c -30 -50 -10 -100 40 -120 c 10 50 -10 95 -40 120 z"/>
         <path d="M560 440 c 10 -60 55 -90 105 -85 c -15 50 -55 85 -105 85 z"/>
         <path d="M240 450 c -55 -20 -75 -70 -60 -115 c 45 25 65 70 60 115 z"/>
       </svg>
