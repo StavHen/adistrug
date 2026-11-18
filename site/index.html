@@ -256,13 +256,7 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .rmsg{width:min(100%, calc(var(--w) * var(--k,.8) * 1px));margin:0;padding:4px;background:#fff;border-radius:18px;box-shadow:0 10px 24px rgba(20,16,12,.16),0 1px 2px rgba(20,16,12,.1)}
 .rmsg img{display:block;width:100%;height:auto;border-radius:14px}
 .revs.home .rcard:nth-child(n+4){display:none}
-.rletter{grid-column:1/-1;display:block;padding:22px 26px 28px}
-.rletter{border-color:var(--skin)}
-.rl-head{text-align:center;margin:6px 0 26px}
-.rl-title{margin:12px 0 0;font-weight:300;line-height:1.15;font-size:calc(clamp(28px,3.4vw,44px) * var(--fs-big))}
-.rl-sub{margin:0;color:var(--mute);font-size:calc(16px * var(--fs))}
-.rl-parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:center;justify-items:center}
-@media (max-width:1000px){.rl-parts{grid-template-columns:1fr;gap:14px}.revs{grid-template-columns:repeat(2,minmax(0,1fr))}.revs.home .rcard:nth-child(n+3){display:none}}
+@media (max-width:1000px){.revs{grid-template-columns:repeat(2,minmax(0,1fr))}.revs.home .rcard:nth-child(n+3){display:none}}
 @media (max-width:640px){.revs{grid-template-columns:1fr;gap:14px}.rcard{padding:20px 16px}
 .revs.home{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(-1 * max(22px,env(safe-area-inset-left,0px)));padding-inline:max(22px,env(safe-area-inset-left,0px));scrollbar-width:none}.revs.home::-webkit-scrollbar{display:none}.revs.home .rcard{flex:0 0 86%;scroll-snap-align:center}.revs.home .rcard:nth-child(n){display:grid}.revs.home .rcard:nth-child(n+7){display:none}}
 .revs-note{color:var(--mute);font-size:calc(14px * var(--fs));margin-top:10px}
@@ -941,7 +935,7 @@ const REVIEWS = [{"w":306,"h":152,"t":"היי שלום, רציתי להגיד ל
 const revHTML = list => list.map(r => `<div class="rcard"><figure class="rmsg" style="--w:${r.w};--k:${r.k}"><img src="${r.src}" alt="${esc('הודעה מלקוח: ' + r.t)}" loading="lazy" width="${r.w}" height="${r.h}"></figure></div>`).join('');
 const REV_SHOW = [1,4,3, 2,11,15, 9,6,23, 27,5,7, 13,14,17, 12,16,19, 21,22,10, 26,20,24, 28,31,30].map(n => REVIEWS[n-1]);
 const LETTER = REVIEWS[7];
-const letterHTML = () => `<div class="rcard rletter"><div class="rl-head"><span class="eyebrow">ביקורת מיוחדת</span><h3 class="rl-title">מכתב מאמא ובת</h3></div><div class="rl-parts">${[['a',287],['b',176],['c',176]].map(([n,h], i) => `<figure class="rmsg" style="--w:387;--k:.82"><img src="img/reviews/08${n}.jpg" alt="${i ? '' : esc('מכתב מלקוחה: ' + LETTER.t)}" loading="lazy" width="387" height="${h}"></figure>`).join('')}</div></div>`;
+const letterHTML = () => [['a',287],['b',176],['c',176]].map(([n,h], i) => `<div class="rcard"><figure class="rmsg" style="--w:387;--k:.82"><img src="img/reviews/08${n}.jpg" alt="${i ? '' : esc('מכתב מלקוחה: ' + LETTER.t)}" loading="lazy" width="387" height="${h}"></figure></div>`).join('');
 $('#homeRevs').innerHTML = revHTML(REV_SHOW.slice(0, 6));
 $('#allRevs').innerHTML = revHTML(REV_SHOW) + letterHTML();
 
