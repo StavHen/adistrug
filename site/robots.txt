@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://adistrug.netlify.app/sitemap.xml
+Sitemap: https://adistrug.co.il/sitemap.xml
