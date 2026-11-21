@@ -324,6 +324,17 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .drop img{width:62px;height:62px;object-fit:cover;border-radius:var(--r)}
 .drop .ph{width:62px;height:62px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--latin);font-size:calc(28px * var(--fs-big));color:var(--mute);flex:none}
 .drop small{display:block;color:var(--mute);font-size:calc(13px * var(--fs))}
+.spot-pick{margin-top:12px;padding:12px 16px}
+.spot-pick .opt{white-space:nowrap}
+.spot-pick .ph{width:44px;height:44px;font-size:calc(22px * var(--fs-big))}
+.spot{margin-top:12px;display:grid;gap:10px}
+.spot canvas{display:block;max-width:100%;max-height:55vh;width:auto;height:auto;margin-inline:auto;border-radius:var(--r);border:1px solid var(--line);touch-action:none;cursor:crosshair}
+.spot canvas:focus-visible{outline:2px solid var(--skin);outline-offset:3px}
+.spot-hint{color:var(--mute);font-size:calc(13px * var(--fs));text-align:center}
+.spot-size{font-size:calc(13.5px * var(--fs));color:var(--bone-2)}
+.spot input[type=range]{width:100%;accent-color:var(--skin);height:28px}
+.spot-acts{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:calc(14px * var(--fs))}
+.spot-acts .copy{min-height:28px}
 .check{display:flex;gap:10px;align-items:center;font-size:calc(15px * var(--fs));cursor:pointer}
 .check input{width:18px;height:18px;accent-color:var(--skin)}
 
@@ -647,7 +658,17 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
             <div class="field" id="f-idea" data-for="idea"><label for="idea">הרעיון</label><textarea id="idea" placeholder="למשל: ענף זית עדין בקו דק, עם המילה ״בית״ בכתב יד"></textarea><span class="err"></span></div>
             <div class="field" id="f-flash" data-for="flash" hidden><label for="flash">איזה פלאש?</label><input id="flash" type="text" placeholder="למשל: הלימונים, מדף מס׳ 5"><span class="err"></span></div>
             <div class="field" id="f-place"><span class="flabel">מיקום בגוף</span><div class="choices" data-group="placement"></div><span class="err"></span></div>
-            <div class="field" id="f-size"><span class="flabel">גודל משוער</span><div class="choices sizes" data-group="size"></div><span class="err"></span></div>
+            <div class="field" id="f-size"><span class="flabel">גודל משוער</span><div class="choices sizes" data-group="size"></div><span class="err"></span>
+              <label class="drop spot-pick" id="spotPick" for="spotFile"><span class="ph">+</span><span><span>צילום של המקום בגוף <span class="opt">(לא חובה)</span></span><small>מצלמים את האזור ומסמנים עליו עיגול בגודל הרצוי</small></span></label>
+              <input id="spotFile" type="file" accept="image/*" class="sr">
+              <div class="spot" id="spot" hidden>
+                <canvas id="spotCv" tabindex="0" role="img" aria-label="צילום המקום בגוף עם עיגול. אפשר להזיז את העיגול עם החצים"></canvas>
+                <small class="spot-hint">גוררים או לוחצים על התמונה כדי להזיז את העיגול</small>
+                <label class="spot-size" for="spotR">גודל העיגול</label>
+                <input type="range" id="spotR" min="3" max="48" value="14">
+                <div class="spot-acts"><button type="button" class="copy" id="spotSave">שמירת התמונה</button><button type="button" class="copy" id="spotFile2">תמונה אחרת</button><button type="button" class="copy" id="spotDel">הסרה</button></div>
+              </div>
+            </div>
             <div class="field" data-for="idea"><span class="flabel">תמונת רפרנס <span class="opt">(במידה ויש)</span></span>
               <label class="drop" id="drop" for="refFile"><span class="ph" id="refPh">+</span><img id="refImg" alt="תצוגה מקדימה של הרפרנס" hidden><span><span id="refName">בחירת תמונה</span><small>תצוגה מקדימה בלבד. את התמונה מצרפים בצ׳אט אחרי השליחה</small></span></label>
               <input id="refFile" type="file" accept="image/*" class="sr">
@@ -688,7 +709,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       <div class="sec-head" style="margin-top:40px" data-sr><div><h2>שאלות</h2></div></div>
       <div class="faq" data-sr>
         <details open><summary>מה קורה אחרי שפונים אליי?</summary><p>אחזור אליכם, נדבר על הרעיון ונתאם מועד. אחרי ביצוע העברת המקדמה אחזור עם אישור שהתור שוריין.</p></details>
-        <details><summary>אפשר להגיע עם רעיון משלי?</summary><p>בטח. רוב הקעקועים שלי התחילו מרעיון אישי: חתימה של אבא, פטיפון של סבא וסבתא, תכשיט שהפך לסקיצה. ספרו לי את הסיפור, ואכין סקיצה בהתאם.</p></details>
+        <details><summary>אפשר להגיע עם רעיון משלי?</summary><p>בטח. הרבה מהקעקועים שלי התחילו מרעיון אישי: חתימה של אבא, פטיפון של סבא וסבתא, זיכרון ילדות שהפך לסקיצה. ספרו לי את הסיפור, ואכין סקיצה בהתאם.</p></details>
         <details><summary>זה הקעקוע הראשון שלי. זה בסדר?</summary><p>לגמרי. ספרו לי שזה הקעקוע הראשון, ואתן לזה את הזמן והשיחה שצריך.</p></details>
         <details><summary>איך שולחים תמונת רפרנס?</summary><p>אחרי השליחה נפתח צ׳אט וואטסאפ עם ההודעה. צרפו שם את התמונה כהודעה נוספת.</p></details>
       </div>
@@ -700,7 +721,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <div class="wrap">
       <div class="page-head"><div><h2>פרטיות</h2></div></div>
       <div class="legal">
-        <div><h3>מה נאסף</h3><p>כשפונים אליי דרך האתר: שם, תיאור הרעיון או הפלאש, מיקום וגודל משוערים, והאם זה קעקוע ראשון.</p></div>
+        <div><h3>מה נאסף</h3><p>כשפונים אליי דרך האתר: שם, תיאור הרעיון או הפלאש, מיקום וגודל משוערים, והאם זה קעקוע ראשון. תמונות שבוחרים בטופס (רפרנס או צילום המקום) לא עולות לאתר. הן נשארות במכשיר שלכם עד שאתם מצרפים אותן בעצמכם בצ׳אט.</p></div>
         <div><h3>לאן זה הולך</h3><p>לאתר אין שרת ששומר את הפרטים. הם נכנסים להודעת וואטסאפ מוכנה, ואתם שולחים אותה אליי בעצמכם. מרגע השליחה ההודעה נשמרת בוואטסאפ, אצלכם ואצלי. וואטסאפ הוא שירות של חברת Meta.</p></div>
         <div><h3>למה</h3><p>רק כדי לחזור אליכם, לתאם את התור ולהכין סקיצה. הפרטים לא מועברים לאף אחד אחר ולא משמשים לפרסום.</p></div>
         <div><h3>מה נשמר במכשיר שלכם</h3><p>שום פרט אישי. אם בחרתם מצב תצוגה (בהיר, כהה או כתב גדול), הדפדפן זוכר רק את הבחירה הזו.</p></div>
@@ -977,6 +998,47 @@ function loadRef(file){
   fr.readAsDataURL(file);
 }
 $('#refFile').addEventListener('change', e => loadRef(e.target.files[0]));
+/* body-spot photo with a size circle (stays on the device) */
+let spotImg = null; const spotC = {x:.5, y:.5};
+const spotCv = $('#spotCv'), spotR = $('#spotR');
+function drawSpot(){
+  if(!spotImg) return;
+  const c = spotCv, g = c.getContext('2d'), m = Math.min(c.width, c.height);
+  const r = m * spotR.value / 100, x = spotC.x * c.width, y = spotC.y * c.height;
+  g.drawImage(spotImg, 0, 0, c.width, c.height);
+  g.beginPath(); g.arc(x, y, r, 0, Math.PI*2);
+  g.lineWidth = Math.max(4, m/110); g.strokeStyle = 'rgba(0,0,0,.55)'; g.stroke();
+  g.lineWidth = Math.max(2, m/220); g.strokeStyle = '#fff'; g.stroke();
+}
+function loadSpot(file){
+  if(!file || !file.type.startsWith('image/')) return;
+  const fr = new FileReader();
+  fr.onload = () => { const im = new Image(); im.onload = () => {
+    const k = Math.min(1, 1100/Math.max(im.width, im.height));
+    spotCv.width = Math.round(im.width*k); spotCv.height = Math.round(im.height*k);
+    spotImg = im; spotC.x = spotC.y = .5; drawSpot();
+    $('#spot').hidden = false; $('#spotPick').hidden = true;
+  }; im.src = fr.result; };
+  fr.readAsDataURL(file);
+}
+function clearSpot(){ spotImg = null; $('#spot').hidden = true; $('#spotPick').hidden = false; $('#spotFile').value = ''; spotR.value = 14; }
+$('#spotFile').addEventListener('change', e => loadSpot(e.target.files[0]));
+$('#spotFile2').onclick = () => $('#spotFile').click();
+$('#spotDel').onclick = clearSpot;
+spotR.addEventListener('input', drawSpot);
+const spotMove = e => { const b = spotCv.getBoundingClientRect(); spotC.x = Math.min(1, Math.max(0, (e.clientX - b.left)/b.width)); spotC.y = Math.min(1, Math.max(0, (e.clientY - b.top)/b.height)); drawSpot(); };
+spotCv.addEventListener('pointerdown', e => { spotCv.setPointerCapture(e.pointerId); spotMove(e); });
+spotCv.addEventListener('pointermove', e => { if(spotCv.hasPointerCapture(e.pointerId)) spotMove(e); });
+spotCv.addEventListener('keydown', e => { const d = {ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[e.key]; if(!d) return; e.preventDefault(); spotC.x = Math.min(1, Math.max(0, spotC.x + d[0]*.03)); spotC.y = Math.min(1, Math.max(0, spotC.y + d[1]*.03)); drawSpot(); });
+function saveSpot(){
+  spotCv.toBlob(async b => {
+    const f = new File([b], 'makom-bagoof.jpg', {type:'image/jpeg'});
+    if(navigator.canShare && navigator.canShare({files:[f]})){ try { await navigator.share({files:[f]}); return; } catch(err){ if(err.name === 'AbortError') return; } }
+    const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = f.name; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000); toast('התמונה נשמרה');
+  }, 'image/jpeg', .85);
+}
+$('#spotSave').onclick = saveSpot;
 const drop = $('#drop');
 ['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
 ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
@@ -1004,6 +1066,7 @@ const buildMsg = r => [
   `👤 שם: ${r.name}`,
   r.mode === 'flash' ? `⚡ הפלאש: ${r.what}` : `✏️ הרעיון: ${r.what}`,
   `📍 מיקום בגוף: ${r.placement}`, `📏 גודל: ${r.size}`, `🌱 קעקוע ראשון: ${r.first ? 'כן' : 'לא'}`,
+  ...(r.spot ? ['📷 צילום המקום עם סימון: מצרף/ת בהודעה הבאה'] : []),
   ...(r.mode === 'idea' ? [`🖼️ רפרנס: ${r.ref ? 'מצרף/ת בהודעה הבאה' : 'אין'}`] : [])
 ].join('\n');
 
@@ -1015,22 +1078,24 @@ $('#talkForm').addEventListener('submit', e => {
   if(!pick.size){ setErr('f-size','בחרו גודל משוער'); ok = false; }
   if(name.length < 2){ setErr('f-name','כתבו שם, כדי שאדע למי לחזור'); ok = false; }
   if(!ok){ $('#talkForm .bad')?.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'}); return; }
-  const r = {mode, name, what, placement: pick.placement, size: pick.size, first: $('#first').checked, ref: mode === 'idea' && !!refData};
+  const r = {mode, name, what, placement: pick.placement, size: pick.size, first: $('#first').checked, ref: mode === 'idea' && !!refData, spot: !!spotImg};
   const msg = buildMsg(r);
   $('#done').innerHTML = `
     <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37"/><path d="M25 41l10 10 20-22"/></svg>
     <h3>עוד לחיצה אחת, ${esc(name.split(' ')[0])}</h3>
-    <p class="muted">שלחו לי את ההודעה בוואטסאפ${r.ref ? ' וצרפו בצ׳אט את תמונת הרפרנס' : ''}, ואחזור אליכם.</p>
+    <p class="muted">שלחו לי את ההודעה בוואטסאפ${r.ref || r.spot ? ` וצרפו בצ׳אט ${r.ref && r.spot ? 'את התמונות' : r.spot ? 'את הצילום המסומן' : 'את תמונת הרפרנס'}` : ''}, ואחזור אליכם.</p>
     <div class="msg" id="msgBox">${esc(msg)}</div>
     <div class="acts"><a class="btn wa" href="${waLink(PHONE_INTL, msg)}" target="_blank" rel="noopener">שליחה בוואטסאפ</a><button class="btn ghost" type="button" id="copyMsg">העתקת ההודעה</button></div>
+    ${r.spot ? '<p class="note"><button class="copy" type="button" id="doneSpot">שמירת הצילום המסומן</button></p>' : ''}
     <p class="note">אם הוואטסאפ לא נפתח, העתיקו ושלחו ל־<span class="tel" dir="ltr">${PHONE}</span>. <button class="copy" type="button" id="newReq">פנייה חדשה</button></p>`;
   $('#talkForm').hidden = true; $('#done').hidden = false; $('#done').classList.add('show'); $('#ticket').classList.add('sent');
   const top = $('.b-grid').getBoundingClientRect().top + scrollY - 120; if(scrollY > top) scrollTo({top, behavior: reduce ? 'auto' : 'smooth'});
   $('#copyMsg').onclick = () => navigator.clipboard ? navigator.clipboard.writeText(msg).then(() => toast('ההודעה הועתקה'), () => selectText($('#msgBox'))) : selectText($('#msgBox'));
   $('#newReq').onclick = resetTalk;
+  if(r.spot) $('#doneSpot').onclick = saveSpot;
 });
 function resetTalk(){
-  $('#talkForm').reset(); refData = null; $('#refImg').hidden = true; $('#refPh').hidden = false; $('#refName').textContent = 'בחירת תמונה';
+  $('#talkForm').reset(); refData = null; $('#refImg').hidden = true; $('#refPh').hidden = false; $('#refName').textContent = 'בחירת תמונה'; clearSpot();
   pick.placement = pick.size = null; $$('.choices .chip').forEach(c => c.setAttribute('aria-pressed','false'));
   $('#ticket').classList.remove('sent'); $('#done').hidden = true; $('#talkForm').hidden = false; setMode('idea');
 }
