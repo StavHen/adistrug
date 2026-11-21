@@ -390,7 +390,8 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 .tag{display:inline-block;font-family:var(--body);font-size:calc(10.5px * var(--fs));letter-spacing:.1em;border:1px solid var(--line-strong);color:var(--mute);border-radius:999px;padding:1px 8px;vertical-align:middle}
 .sheet{background:#e9e3da;padding:14px;transform:rotate(1.6deg);box-shadow:0 30px 70px rgba(0,0,0,.5);transition:transform .8s var(--ease)}
 .sheet:hover{transform:rotate(0) scale(1.01)}
-.flashes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.flashes{--c:3;--g:8px;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--g)}
+.flashes > button{flex:0 0 calc((100% - (var(--c) - 1) * var(--g)) / var(--c));min-width:0}
 .flashes button{display:block;padding:0;border:0;background:#f4f0ea;cursor:zoom-in;aspect-ratio:3/4;overflow:hidden;border-radius:var(--r);box-shadow:0 10px 26px rgba(0,0,0,.25)}
 .flashes img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
 .flashes button:hover img{transform:scale(1.04)}
@@ -403,9 +404,9 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
   .flash-cap{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:6px 32px}
   .flash-cap h3,.flash-cap p{grid-column:1}
   .flash-cap .btn{grid-column:2;grid-row:1 / span 2;align-self:center}
-  .flashes{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+  .flashes{--c:4;--g:14px}
 }
-/* 10 flash sheets: 2 per row on phone, 5 on desktop (Adi removed 2, 21.11) */
+@media (min-width:1400px){.flashes{--c:6}} /* last row centred when the count doesn't fill it */
 @media (min-width:901px){div.flash-cap p{max-width:none}.faq{max-width:none}}
 .talk-flashes{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
 .flash-cap{margin-bottom:22px}
@@ -949,7 +950,7 @@ $('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overf
   if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); toForm(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }); return; }
   setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
 /* ---------- flashes (sheets Adi sent) ---------- */
-const FLASHES = [1,2,4,5,7,8,9,10,11,12].map(k => { const n = String(k).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })
+const FLASHES = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(k => { const n = String(k).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })
   .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
 $('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
 $('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
