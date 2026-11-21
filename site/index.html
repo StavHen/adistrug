@@ -171,11 +171,11 @@ nav.links a[aria-current="page"]::after,nav.links a:hover::after{transform:scale
 .tabbar{display:none}
 @media (max-width:860px){
   nav.links,header.top .cta{display:none}
-  .tabbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--glass-bar);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--glass-bar);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:6px max(10px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(10px,env(safe-area-inset-left,0px))}
   .tabbar a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 3px;text-decoration:none;font-size:calc(12.5px * var(--fs));color:var(--mute);border-radius:12px;transition:color .3s,background .3s}
   .tabbar a svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.2}
-  .tabbar a[aria-current="page"]{color:var(--bone)}
-  .tabbar a.book{background:var(--skin);color:var(--on);font-weight:500;margin-inline:4px}
+  .tabbar a{white-space:nowrap;margin-inline:2px;font-size:min(calc(12.5px * var(--fs)),3.5vw)}
+  .tabbar a[aria-current="page"]{background:var(--skin);color:var(--on);font-weight:500} /* the pill follows the page you are on (Stav, 21.11) */
   body{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
 }
 
@@ -408,7 +408,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 }
 @media (min-width:1400px){.flashes{--c:6}} /* last row centred when the count doesn't fill it */
 @media (min-width:901px){div.flash-cap p{max-width:none}.faq{max-width:none}}
-.talk-flashes{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
+.flash-page{margin-bottom:80px}
 .flash-cap{margin-bottom:22px}
 .flash-cap h3{font-size:calc(30px * var(--fs-big));margin-bottom:8px}
 .flash-cap p{color:var(--bone-2);font-weight:400;margin-bottom:18px;max-width:40ch}
@@ -550,6 +550,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <nav class="links" aria-label="ניווט ראשי">
       <a href="#home" data-nav="home">בית</a>
       <a href="#work" data-nav="work">עבודות</a>
+      <a href="#flashes" data-nav="flashes">פלאשים</a>
       <a href="#reviews" data-nav="reviews">המלצות</a>
       <a href="#studio" data-nav="studio">סטודיו</a>
     </nav>
@@ -689,9 +690,16 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
           <div class="stamp">נשלח</div>
         </aside>
       </div>
-      <div class="talk-flashes" id="talkFlashes" data-sr>
-          <div class="flash-cap"><h3>פלאשים זמינים שמחפשים בית חם</h3><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
-          <div class="flashes" id="flashes"></div>
+    </div>
+  </section>
+
+  <!-- FLASHES (own page, Stav 21.11) -->
+  <section class="view" data-view="flashes" hidden>
+    <div class="wrap">
+      <div class="page-head"><div><h2>פלאשים זמינים שמחפשים בית חם</h2></div></div>
+      <div class="flash-page">
+        <div class="flash-cap"><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
+        <div class="flashes" id="flashGrid"></div>
       </div>
     </div>
   </section>
@@ -808,7 +816,8 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
   <nav class="tabbar" aria-label="ניווט">
     <a href="#home" data-nav="home"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v8h-5v-5H9v5H4z"/></svg>בית</a>
     <a href="#work" data-nav="work"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="9"/><rect x="13" y="4" width="7" height="6"/><rect x="4" y="15" width="7" height="5"/><rect x="13" y="12" width="7" height="8"/></svg>עבודות</a>
-    <a href="#talk" data-nav="talk" class="book"><svg viewBox="0 0 24 24"><path d="M5 5h14v10H10l-4 4v-4H5z"/></svg>בואו נדבר</a>
+    <a href="#talk" data-nav="talk"><svg viewBox="0 0 24 24"><path d="M5 5h14v10H10l-4 4v-4H5z"/></svg>בואו נדבר</a>
+    <a href="#flashes" data-nav="flashes"><svg viewBox="0 0 24 24"><path d="M12 21v-9M8 4.5c0 4.5 1.6 7.5 4 7.5s4-3 4-7.5l-2 1.7-2-2.7-2 2.7z"/><path d="M12 17c-1.4-1.6-3.3-2.2-5-1.8M12 19c1.4-1.6 3.3-2.2 5-1.8"/></svg>פלאשים</a>
     <a href="#studio" data-nav="studio"><svg viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>סטודיו</a>
   </nav>
 </div>
@@ -876,7 +885,7 @@ const src = w => w.src || `img/${w.id}.jpg`;
 const thumb = w => w.src || `img/t/${w.id}.jpg`;
 
 /* ---------- router ---------- */
-const VIEWS = ['home','work','reviews','talk','studio','privacy','terms','accessibility'];
+const VIEWS = ['home','work','flashes','reviews','talk','studio','privacy','terms','accessibility'];
 const ALIAS = {book:'talk', admin:'home'};
 const cur = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : (ALIAS[h] || 'home'); };
 $$('.view').forEach(v => v.querySelectorAll('[data-rv]').forEach((el,i) => el.style.setProperty('--i', i)));
@@ -991,8 +1000,8 @@ $('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overf
 /* ---------- flashes (sheets Adi sent) ---------- */
 const FLASHES = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(k => { const n = String(k).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })
   .map((f, i) => ({...f, alt:`דף פלאשים מס׳ ${i+1}`}));
-$('#flashes').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
-$('#flashes').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
+$('#flashGrid').innerHTML = FLASHES.map((f, i) => `<button type="button" data-f="${i}" aria-label="פתיחת ${f.alt}"><img src="${f.th}" alt="" loading="lazy" width="360" height="480"></button>`).join('');
+$('#flashGrid').addEventListener('click', e => { const b = e.target.closest('[data-f]'); if(b) openLb(+b.dataset.f, FLASHES, 'flash'); });
 
 /* ---------- reviews: screenshots of clients' messages ---------- */
 const REV_K = [1.0, 0.7, 0.8, 0.72, 0.8, 0.72, 0.7, 0.8, 1.0, 0.8, 0.72, 0.8, 0.7, 0.72, 0.72, 0.8, 1.0, 0.8, 0.72, 0.74, 1.0, 0.72, 0.8, 0.8, 0.72, 0.7, 0.72, 0.7, 0.8, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
