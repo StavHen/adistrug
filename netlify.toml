@@ -1,3 +1,0 @@
-# Netlify reads this file. Only the "site" folder is published.
-[build]
-  publish = "site"
