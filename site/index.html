@@ -396,6 +396,7 @@ textarea{min-height:110px;resize:vertical;line-height:1.55}
 }
 @media (min-width:1400px){.flashes{grid-template-columns:repeat(6,minmax(0,1fr))}}
 @media (min-width:901px){div.flash-cap p{max-width:none}.faq{max-width:none}}
+.talk-flashes{margin-top:72px;padding-top:40px;border-top:1px solid var(--line)}
 .flash-cap{margin-bottom:22px}
 .flash-cap h3{font-size:calc(30px * var(--fs-big));margin-bottom:8px}
 .flash-cap p{color:var(--bone-2);font-weight:400;margin-bottom:18px;max-width:40ch}
@@ -441,7 +442,7 @@ footer.foot .cols b{display:block;color:var(--bone);font-weight:400}
 .lb{position:fixed;inset:0;z-index:200;background:rgba(10,9,8,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:calc(env(safe-area-inset-top,0px) + 12px) max(16px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 16px) max(16px,env(safe-area-inset-left,0px));animation:fadeIn .35s ease}
 @keyframes fadeIn{from{opacity:0}}
 .lb-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--latin);font-style:var(--lstyle);font-size:calc(20px * var(--fs));color:var(--skin)}
-.lb-stage{position:relative;display:grid;place-items:center;min-height:0;touch-action:pan-y}
+.lb-stage{position:relative;display:grid;grid-template:minmax(0,1fr) / minmax(0,1fr);place-items:center;min-height:0;touch-action:pan-y}
 .lb-stage img{max-height:100%;max-width:100%;object-fit:contain;animation:rise .45s var(--ease)}
 .lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%)}
 .lb-prev{inset-inline-start:0}.lb-next{inset-inline-end:0}
@@ -590,20 +591,20 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       </div>
     </div>
     <div class="wrap home-sec">
-      <div class="sec-head"><div><h2 data-rv>עבודות</h2></div><a class="more" href="#work" data-rv>לכל העבודות <span class="arr">←</span></a></div>
+      <div class="sec-head"><div><h2 data-rv>עבודות</h2></div><a class="more" href="#work" data-rv>לעוד עבודות <span class="arr">←</span></a></div>
       <div class="cat-grid" id="homeWorks" data-sr></div>
     </div>
     <div class="wrap home-sec" style="padding-top:0;padding-bottom:0">
       <div class="sec-head" data-sr><div><h2>איך זה עובד</h2></div></div>
       <div class="steps" data-sr>
-        <div class="step"><div class="num">1</div><h3>מתאמים תור</h3><p>בשיחה איתי, בלי יומן ובלי טפסים מסובכים.</p></div>
+        <div class="step"><div class="num">1</div><h3>מתאמים תור</h3><p>פשוט – בשיחה איתי.</p></div>
         <div class="step"><div class="num">2</div><h3>מספרים על הרעיון</h3><p>מה, איפה בגוף, באיזה גודל, ותמונת השראה (רפרנס, במידה ויש).</p></div>
         <div class="step"><div class="num">3</div><h3>אישור אחרי מקדמה</h3><p>התור ישוריין לאחר תשלום מקדמה.</p></div>
         <div class="step"><div class="num">4</div><h3>סקיצה וקעקוע</h3><p>נפגשים, מדייקים יחד את הסקיצה והמיקום, ומתחילים.</p></div>
       </div>
     </div>
     <div class="wrap home-sec">
-      <div class="sec-head" data-sr><div><h2>המלצות</h2></div><a class="more" href="#reviews">לכל ההמלצות <span class="arr">←</span></a></div>
+      <div class="sec-head" data-sr><div><h2>הודעות שלכם שחיממו לי את הלב</h2></div><a class="more" href="#reviews" aria-label="לעוד הודעות">לעוד <span class="arr">←</span></a></div>
       <div class="revs home" id="homeRevs" data-sr></div>
     </div>
     <div class="band" data-sr>
@@ -666,6 +667,10 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
           <div class="stamp">נשלח</div>
         </aside>
       </div>
+      <div class="talk-flashes" id="talkFlashes" data-sr>
+          <div class="flash-cap"><h3>פלאשים זמינים שמחפשים בית חם</h3><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
+          <div class="flashes" id="flashes"></div>
+      </div>
     </div>
   </section>
 
@@ -678,10 +683,6 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
           <div><h3>איפה</h3><div><p class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>גבעתיים</p><p class="pin-note">הכתובת תישלח בתיאום התור</p></div></div>
           <div><h3>מתי</h3><dl><dt>ימים</dt><dd>ראשון עד שישי</dd><dt>שעות</dt><dd>בתיאום מולי</dd></dl></div>
           <div><h3>דברו איתי</h3><dl data-contacts-dl></dl></div>
-        </div>
-        <div data-rv>
-          <div class="flash-cap"><h3>פלאשים זמינים שמחפשים בית חם</h3><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
-          <div class="flashes" id="flashes"></div>
         </div>
       </div>
       <div class="sec-head" style="margin-top:40px" data-sr><div><h2>שאלות</h2></div></div>
@@ -802,14 +803,14 @@ const WORKS = [
  ['039','פלואו על הגב'],['008','דגי קוי'],['013','פרחים'],
  ['027','נמר'],['012','כוס שפריץ'],['029','קו לאורך עמוד השדרה'],
  ['010','עגבניות ופרחים'],['031','שפירית אורנמנטלית'],['016','כיתוב ביוונית ובעברית'],
- ['037','פרח'],['019','היביסקוס'],['041','פגיון'],
+ ['037','פרח'],['054','ענף פורח על השוק'],['019','היביסקוס'],['041','פגיון'],
  ['053','קו לאורך עמוד השדרה'],['034','כיתוב'],['006','פרח'],
  ['046','פרח בפלואו'],['025','כיתוב על הצלעות'],
  ['007','פרח'],['043','מניפה יפנית'],['045','סקיצה מתכשיט'],
  ['003','חתימה'],['049','שפירית קטנה'],['035','פלאשים'],
  ['047','קעקוע קטן'],['040','קעקוע על הזרוע']
 ].map(([id,t]) => ({id,t}));
-const RATIO = {'000':1.3333,'001':1.3333,'002':1.3333,'003':1.2033,'006':1.3333,'007':1.3333,'008':1.3333,'010':1.3333,'011':1.3333,'012':1.3333,'013':1.0189,'015':1.3333,'016':1.3333,'019':1.3333,'023':1.1022,'025':1.3333,'027':1.3333,'029':1.3333,'031':1.3333,'034':1.18,'035':1.3322,'037':1.3333,'039':1.3333,'040':1.3333,'041':1.3333,'043':1.3333,'045':1.3333,'046':1.3333,'047':1.3333,'049':1.3333,'053':1.3333,'076':1.3333,'077':1.3333,'078':1.3333,'079':1.3333,'080':1.3333,'081':1.3333,'082':1.3333};
+const RATIO = {'054':1.4867,'000':1.3333,'001':1.3333,'002':1.3333,'003':1.2033,'006':1.3333,'007':1.3333,'008':1.3333,'010':1.3333,'011':1.3333,'012':1.3333,'013':1.0189,'015':1.3333,'016':1.3333,'019':1.3333,'023':1.1022,'025':1.3333,'027':1.3333,'029':1.3333,'031':1.3333,'034':1.18,'035':1.3322,'037':1.3333,'039':1.3333,'040':1.3333,'041':1.3333,'043':1.3333,'045':1.3333,'046':1.3333,'047':1.3333,'049':1.3333,'053':1.3333,'076':1.3333,'077':1.3333,'078':1.3333,'079':1.3333,'080':1.3333,'081':1.3333,'082':1.3333};
 const src = w => w.src || `img/${w.id}.jpg`;
 const thumb = w => w.src || `img/t/${w.id}.jpg`;
 
@@ -900,7 +901,9 @@ function renderWall(){
 $('#wall').addEventListener('click', e => { const b = e.target.closest('[data-wi]'); if(b) openLb(+b.dataset.wi, WORKS); });
 addEventListener('resize', () => { if(cur() === 'work') renderWall(); }, {passive:true});
 const inspired = i => `בהשראת עבודה מס׳ ${i+1} מהאתר: `;
-$('#flashBtn').onclick = () => { setMode('flash'); location.hash = '#talk'; setTimeout(() => $('#flash').focus({preventScroll:true}), 500); };
+/* flashes live on the talk page (Adi, 18.11): jump up to the form */
+const toForm = then => { if(cur() === 'talk'){ $('#talkForm').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); setTimeout(then, 450); } else { location.hash = '#talk'; setTimeout(then, 500); } };
+$('#flashBtn').onclick = () => { setMode('flash'); toForm(() => $('#flash').focus({preventScroll:true})); };
 function prefill(text){ const idea = $('#idea'); idea.value = text + idea.value.replace(/^בהשראת עבודה מס׳ \d+ מהאתר: /, ''); renderTicket(); }
 
 /* ---------- lightbox ---------- */
@@ -922,7 +925,7 @@ let lx = null;
 $('#lbStage').addEventListener('pointerdown', e => lx = e.clientX);
 $('#lbStage').addEventListener('pointerup', e => { if(lx === null) return; const dx = e.clientX - lx; lx = null; if(Math.abs(dx) > 50 && lbList.length > 1) lbStep(dx > 0 ? 1 : -1); });
 $('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overflow = '';
-  if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); location.hash = '#talk'; setTimeout(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }, 500); return; }
+  if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); toForm(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }); return; }
   setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
 /* ---------- flashes (sheets Adi sent) ---------- */
 const FLASHES = [...Array.from({length:12}, (_, i) => { const n = String(i+1).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })]
