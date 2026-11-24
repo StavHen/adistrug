@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Edit THIS file only. After editing, run: python3 tools/build_pages.py (makes work.html, flashes.html... and sitemap.xml). -->
 <html lang="he">
 <head>
 <meta charset="utf-8">
@@ -548,15 +549,15 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
 <div id="app" dir="rtl" lang="he">
 
   <header class="top" id="hdr"><div class="wrap">
-    <a class="logo" href="#home">Adi Strug<small>TATTOOS</small></a>
+    <a class="logo" href="/">Adi Strug<small>TATTOOS</small></a>
     <nav class="links" aria-label="ניווט ראשי">
-      <a href="#home" data-nav="home">בית</a>
-      <a href="#work" data-nav="work">עבודות</a>
-      <a href="#flashes" data-nav="flashes">פלאשים</a>
-      <a href="#reviews" data-nav="reviews">המלצות</a>
-      <a href="#studio" data-nav="studio">סטודיו</a>
+      <a href="/" data-nav="home">בית</a>
+      <a href="/work" data-nav="work">עבודות</a>
+      <a href="/flashes" data-nav="flashes">פלאשים</a>
+      <a href="/reviews" data-nav="reviews">המלצות</a>
+      <a href="/studio" data-nav="studio">סטודיו</a>
     </nav>
-    <a class="btn sm cta" href="#talk">בואו נדבר <span class="arr">←</span></a>
+    <a class="btn sm cta" href="/talk">בואו נדבר <span class="arr">←</span></a>
     <div class="a11y" id="a11y" dir="rtl">
     <button type="button" class="a11y-btn" id="a11yBtn" aria-expanded="false" aria-controls="a11yPanel" aria-label="תצוגה ונגישות: כתב גדול, מצב בהיר או כהה"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5l7 1.5 7-1.5M12 10v5M12 15l-3.5 6M12 15l3.5 6"/></svg></button>
       <div class="a11y-panel" id="a11yPanel" role="group" aria-label="הגדרות תצוגה" hidden>
@@ -567,7 +568,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
           <button type="button" data-theme-set="dark">כהה</button>
         </div>
         <button type="button" class="a11y-big" id="a11yText" aria-pressed="false">כתב גדול</button>
-        <a href="#accessibility">הצהרת נגישות</a>
+        <a href="/accessibility">הצהרת נגישות</a>
       </div>
     </div>
   </div></header>
@@ -592,7 +593,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
           <div class="next" data-rv>
             <div class="next-main">
               <b>יש לכם רעיון? <span class="nw">בואו נדבר <span dir="ltr">:)</span></span></b>
-              <a class="btn" href="#talk">לכתוב לי <span class="arr">←</span></a>
+              <a class="btn" href="/talk">לכתוב לי <span class="arr">←</span></a>
             </div>
             <div class="next-more" data-contacts></div>
           </div>
@@ -606,7 +607,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       </div>
     </div>
     <div class="wrap home-sec">
-      <div class="sec-head"><div><h2 data-rv>עבודות</h2></div><a class="more" href="#work" data-rv>לעוד עבודות <span class="arr">←</span></a></div>
+      <div class="sec-head"><div><h2 data-rv>עבודות</h2></div><a class="more" href="/work" data-rv>לעוד עבודות <span class="arr">←</span></a></div>
       <div class="cat-grid" id="homeWorks" data-sr></div>
     </div>
     <div class="wrap home-sec" style="padding-top:0;padding-bottom:0">
@@ -619,14 +620,14 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       </div>
     </div>
     <div class="wrap home-sec">
-      <div class="sec-head" data-sr><div><h2>הודעות שלכם שחיממו לי את הלב</h2></div><a class="more" href="#reviews" aria-label="לעוד הודעות">לעוד <span class="arr">←</span></a></div>
+      <div class="sec-head" data-sr><div><h2>הודעות שלכם שחיממו לי את הלב</h2></div><a class="more" href="/reviews" aria-label="לעוד הודעות">לעוד <span class="arr">←</span></a></div>
       <div class="revs home" id="homeRevs" data-sr></div>
     </div>
     <div class="band" data-sr>
       <div class="band-ph" id="bandPh" aria-hidden="true"></div>
       <div class="band-in">
         <h3><span class="nw">יש לכם רעיון?</span> <span class="nw">בואו נדבר <span dir="ltr">:)</span></span></h3>
-        <a class="btn" href="#talk">לכתוב לי <span class="arr">←</span></a>
+        <a class="btn" href="/talk">לכתוב לי <span class="arr">←</span></a>
       </div>
     </div>
   </section>
@@ -636,13 +637,14 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
     <div class="wrap">
       <div class="page-head"><div><h2 data-rv>עבודות</h2></div></div>
       <div class="wall" id="wall" aria-label="כל העבודות"></div>
+      <!-- works:noscript --><noscript><ul><li><img src="img/082.jpg" alt="קעקוע פרח בתוך אליפסה" loading="lazy"></li><li><img src="img/081.jpg" alt="קעקוע פרחים על המותן" loading="lazy"></li><li><img src="img/080.jpg" alt="קעקוע פנס על הכתף" loading="lazy"></li><li><img src="img/079.jpg" alt="קעקוע חמסה זוגית" loading="lazy"></li><li><img src="img/078.jpg" alt="קעקוע פפיון עדין" loading="lazy"></li><li><img src="img/077.jpg" alt="קעקוע כובע בקו דק" loading="lazy"></li><li><img src="img/084.jpg" alt="קעקוע קאלה ופרח" loading="lazy"></li><li><img src="img/083.jpg" alt="קעקוע פרח בפלואו על הכתף" loading="lazy"></li><li><img src="img/001.jpg" alt="קעקוע פלואו ושמש" loading="lazy"></li><li><img src="img/002.jpg" alt="קעקוע עץ ומאזניים" loading="lazy"></li><li><img src="img/011.jpg" alt="קעקוע עוף החול" loading="lazy"></li><li><img src="img/000.jpg" alt="קעקוע מניפות יפניות" loading="lazy"></li><li><img src="img/023.jpg" alt="קעקוע פטיפון" loading="lazy"></li><li><img src="img/015.jpg" alt="קעקוע פרה ואנפה" loading="lazy"></li><li><img src="img/039.jpg" alt="קעקוע פלואו על הגב" loading="lazy"></li><li><img src="img/008.jpg" alt="קעקוע דגי קוי" loading="lazy"></li><li><img src="img/013.jpg" alt="קעקוע פרחים" loading="lazy"></li><li><img src="img/027.jpg" alt="קעקוע נמר" loading="lazy"></li><li><img src="img/012.jpg" alt="קעקוע כוס שפריץ" loading="lazy"></li><li><img src="img/029.jpg" alt="קעקוע קו לאורך עמוד השדרה" loading="lazy"></li><li><img src="img/010.jpg" alt="קעקוע עגבניות ופרחים" loading="lazy"></li><li><img src="img/031.jpg" alt="קעקוע שפירית אורנמנטלית" loading="lazy"></li><li><img src="img/016.jpg" alt="קעקוע כיתוב ביוונית ובעברית" loading="lazy"></li><li><img src="img/037.jpg" alt="קעקוע פרח" loading="lazy"></li><li><img src="img/054.jpg" alt="קעקוע ענף פורח על השוק" loading="lazy"></li><li><img src="img/019.jpg" alt="קעקוע היביסקוס" loading="lazy"></li><li><img src="img/041.jpg" alt="קעקוע פגיון" loading="lazy"></li><li><img src="img/053.jpg" alt="קעקוע קו לאורך עמוד השדרה" loading="lazy"></li><li><img src="img/034.jpg" alt="קעקוע כיתוב" loading="lazy"></li><li><img src="img/006.jpg" alt="קעקוע פרח" loading="lazy"></li><li><img src="img/046.jpg" alt="קעקוע פרח בפלואו" loading="lazy"></li><li><img src="img/025.jpg" alt="קעקוע כיתוב על הצלעות" loading="lazy"></li><li><img src="img/007.jpg" alt="קעקוע פרח" loading="lazy"></li><li><img src="img/043.jpg" alt="קעקוע מניפה יפנית" loading="lazy"></li><li><img src="img/045.jpg" alt="קעקוע סקיצה מתכשיט" loading="lazy"></li><li><img src="img/003.jpg" alt="קעקוע חתימה" loading="lazy"></li><li><img src="img/049.jpg" alt="קעקוע שפירית קטנה" loading="lazy"></li><li><img src="img/035.jpg" alt="קעקוע פלאשים" loading="lazy"></li><li><img src="img/047.jpg" alt="קעקוע קעקוע קטן" loading="lazy"></li><li><img src="img/040.jpg" alt="קעקוע קעקוע על הזרוע" loading="lazy"></li></ul></noscript><!-- /works:noscript -->
     </div>
   </section>
 
   <!-- REVIEWS -->
   <section class="view" data-view="reviews" hidden>
     <div class="wrap">
-      <div class="page-head"><div><h2 class="sr-only">המלצות</h2><p class="lead" data-rv>הודעות שקיבלתי מלקוחות אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
+      <div class="page-head"><div><h2 class="sr-only">המלצות</h2><p class="lead" data-rv>הודעות שקיבלתי מלקוחות אחרי הקעקוע. כל אחת מהן מחממת לי את הלב.</p></div><a class="btn" href="/talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
       <div class="revs" id="allRevs"></div>
       <div style="height:80px"></div>
     </div>
@@ -680,7 +682,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
             <div class="field" id="f-name"><label for="name">שם</label><input id="name" type="text" autocomplete="name"><span class="err"></span></div>
             <label class="check"><input type="checkbox" id="first"> זה הקעקוע הראשון שלי</label>
             <div class="b-nav"><span></span><button class="btn" type="submit">שליחה בוואטסאפ <span class="arr">←</span></button></div>
-            <p class="form-note">הפרטים לא נשמרים באתר. הם נכנסים להודעת וואטסאפ שאתם שולחים בעצמכם. <a href="#privacy">פרטיות</a> · <a href="#terms">תקנון</a></p>
+            <p class="form-note">הפרטים לא נשמרים באתר. הם נכנסים להודעת וואטסאפ שאתם שולחים בעצמכם. <a href="/privacy">פרטיות</a> · <a href="/terms">תקנון</a></p>
             <p class="form-note">מעדיפים אחרת? <span data-contacts-inline></span></p>
           </form>
           <div class="bstep done" id="done" hidden></div>
@@ -702,6 +704,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       <div class="flash-page">
         <div class="flash-cap"><p>לעוד פלאשים והצעות הגשה על הגוף, כנסו <a href="https://www.instagram.com/adistrug/" target="_blank" rel="noopener">לאינסטגרם שלי</a></p><button class="btn ghost" type="button" id="flashBtn">אני רוצה פלאש <span class="arr">←</span></button></div>
         <div class="flashes" id="flashGrid"></div>
+        <!-- flashes:noscript --><noscript><ul><li><img src="img/f/f01.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 1" loading="lazy"></li><li><img src="img/f/f02.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 2" loading="lazy"></li><li><img src="img/f/f03.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 3" loading="lazy"></li><li><img src="img/f/f04.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 4" loading="lazy"></li><li><img src="img/f/f05.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 5" loading="lazy"></li><li><img src="img/f/f06.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 6" loading="lazy"></li><li><img src="img/f/f07.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 7" loading="lazy"></li><li><img src="img/f/f08.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 8" loading="lazy"></li><li><img src="img/f/f09.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 9" loading="lazy"></li><li><img src="img/f/f10.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 10" loading="lazy"></li><li><img src="img/f/f11.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 11" loading="lazy"></li><li><img src="img/f/f12.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 12" loading="lazy"></li><li><img src="img/f/f13.jpg" alt="פלאשים זמינים לקעקוע, דף מס׳ 13" loading="lazy"></li></ul></noscript><!-- /flashes:noscript -->
       </div>
     </div>
   </section>
@@ -709,7 +712,7 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
   <!-- STUDIO -->
   <section class="view" data-view="studio" hidden>
     <div class="wrap">
-      <div class="page-head"><div><h2 data-rv>סטודיו</h2></div><a class="btn" href="#talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
+      <div class="page-head"><div><h2 data-rv>סטודיו</h2></div><a class="btn" href="/talk" data-rv>בואו נדבר <span class="arr">←</span></a></div>
       <div class="studio-grid">
         <div class="info" data-rv>
           <div><h3>איפה</h3><div><p class="pin"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>גבעתיים</p><p class="pin-note">הכתובת תישלח בתיאום התור</p></div></div>
@@ -811,16 +814,16 @@ body[data-view="talk"] .wa-float,.wa-float.away{opacity:0;pointer-events:none}
       <div data-email-col hidden><b>מייל</b><a class="tel" dir="ltr" data-email></a></div>
       <div><b>סטודיו</b>גבעתיים</div>
       <div><b>ימים</b>ראשון עד שישי<br>שעות בתיאום</div>
-      <div><b>מידע</b><a href="#reviews">המלצות</a> · <a href="#terms">תקנון</a> · <a href="#privacy">פרטיות</a> · <a href="#accessibility">נגישות</a></div>
+      <div><b>מידע</b><a href="/reviews">המלצות</a> · <a href="/terms">תקנון</a> · <a href="/privacy">פרטיות</a> · <a href="/accessibility">נגישות</a></div>
     </div>
   </div></footer>
 
   <nav class="tabbar" aria-label="ניווט">
-    <a href="#home" data-nav="home"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v8h-5v-5H9v5H4z"/></svg>בית</a>
-    <a href="#work" data-nav="work"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="9"/><rect x="13" y="4" width="7" height="6"/><rect x="4" y="15" width="7" height="5"/><rect x="13" y="12" width="7" height="8"/></svg>עבודות</a>
-    <a href="#talk" data-nav="talk"><svg viewBox="0 0 24 24"><path d="M5 5h14v10H10l-4 4v-4H5z"/></svg>בואו נדבר</a>
-    <a href="#flashes" data-nav="flashes"><svg viewBox="0 0 24 24"><path d="M12 21v-9M8 4.5c0 4.5 1.6 7.5 4 7.5s4-3 4-7.5l-2 1.7-2-2.7-2 2.7z"/><path d="M12 17c-1.4-1.6-3.3-2.2-5-1.8M12 19c1.4-1.6 3.3-2.2 5-1.8"/></svg>פלאשים</a>
-    <a href="#studio" data-nav="studio"><svg viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>סטודיו</a>
+    <a href="/" data-nav="home"><svg viewBox="0 0 24 24"><path d="M4 11l8-6 8 6v8h-5v-5H9v5H4z"/></svg>בית</a>
+    <a href="/work" data-nav="work"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="9"/><rect x="13" y="4" width="7" height="6"/><rect x="4" y="15" width="7" height="5"/><rect x="13" y="12" width="7" height="8"/></svg>עבודות</a>
+    <a href="/talk" data-nav="talk"><svg viewBox="0 0 24 24"><path d="M5 5h14v10H10l-4 4v-4H5z"/></svg>בואו נדבר</a>
+    <a href="/flashes" data-nav="flashes"><svg viewBox="0 0 24 24"><path d="M12 21v-9M8 4.5c0 4.5 1.6 7.5 4 7.5s4-3 4-7.5l-2 1.7-2-2.7-2 2.7z"/><path d="M12 17c-1.4-1.6-3.3-2.2-5-1.8M12 19c1.4-1.6 3.3-2.2 5-1.8"/></svg>פלאשים</a>
+    <a href="/studio" data-nav="studio"><svg viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 1112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>סטודיו</a>
   </nav>
 </div>
 
@@ -890,7 +893,11 @@ const thumb = w => w.src || `img/t/${w.id}.jpg`;
 const VIEWS = ['home','work','flashes','reviews','talk','studio','privacy','terms','accessibility'];
 const ALIAS = {book:'talk', admin:'home'};
 const TITLE0 = document.title, TITLES = {work:'עבודות', flashes:'פלאשים זמינים', reviews:'המלצות', talk:'בואו נדבר', studio:'סטודיו בגבעתיים', privacy:'פרטיות', terms:'תקנון', accessibility:'הצהרת נגישות'};
-const cur = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : (ALIAS[h] || 'home'); };
+/* real page addresses (/work, /flashes...) so Google indexes each page; old #hash links still work */
+const fromHash = () => { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : (ALIAS[h] || ''); };
+const cur = () => { const p = location.pathname.replace(/^\/+|\.html$|\/+$/g, ''); return VIEWS.includes(p) ? p : (fromHash() || 'home'); };
+const pathOf = v => v === 'home' ? '/' : '/' + v;
+const go = (v, replace) => { if(location.pathname !== pathOf(v) || location.hash) history[replace ? 'replaceState' : 'pushState'](null, '', pathOf(v)); show(v); };
 $$('.view').forEach(v => v.querySelectorAll('[data-rv]').forEach((el,i) => el.style.setProperty('--i', i)));
 function show(v, first){
   const apply = () => {
@@ -906,7 +913,14 @@ function show(v, first){
   };
   if(!first && !reduce && document.startViewTransition) document.startViewTransition(apply); else apply();
 }
-window.addEventListener('hashchange', () => show(cur()));
+window.addEventListener('popstate', () => show(cur()));
+window.addEventListener('hashchange', () => { const h = fromHash(); if(h) go(h, true); });
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="/"]'); if(!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || a.target) return;
+  const v = a.getAttribute('href') === '/' ? 'home' : a.getAttribute('href').slice(1);
+  if(v !== 'home' && !VIEWS.includes(v)) return;
+  e.preventDefault(); if(v === cur()) { window.scrollTo(0,0); return; } go(v);
+});
 const hdr = $('#hdr'); addEventListener('scroll', () => hdr.classList.toggle('solid', scrollY > 20), {passive:true});
 
 /* ---------- home: deck ---------- */
@@ -931,7 +945,7 @@ document.addEventListener('visibilitychange', () => { if(document.hidden) deckSt
 
 /* home: a strip of recent works, no text */
 $('#homeWorks').innerHTML = WORKS.slice(0,6).map((w,i) => `
-  <a class="cat" href="#work" data-wid="${i}" data-rv="img" style="--i:${i+3}" aria-label="פתיחת העבודה בגלריה">
+  <a class="cat" href="/work" data-wid="${i}" data-rv="img" style="--i:${i+3}" aria-label="פתיחת העבודה בגלריה">
     <img src="${src(w)}" alt="קעקוע ${esc(w.t)}" loading="lazy" decoding="async">
     <span class="go" aria-hidden="true">←</span>
   </a>`).join('');
@@ -976,7 +990,7 @@ $('#wall').addEventListener('click', e => { const b = e.target.closest('[data-wi
 addEventListener('resize', () => { if(cur() === 'work') renderWall(); }, {passive:true});
 const inspired = i => `בהשראת עבודה מס׳ ${i+1} מהאתר: `;
 /* flashes live on the talk page (Adi, 18.11): jump up to the form */
-const toForm = then => { if(cur() === 'talk'){ $('#talkForm').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); setTimeout(then, 450); } else { location.hash = '#talk'; setTimeout(then, 500); } };
+const toForm = then => { if(cur() === 'talk'){ $('#talkForm').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block:'start'}); setTimeout(then, 450); } else { go('talk'); setTimeout(then, 500); } };
 $('#flashBtn').onclick = () => { setMode('flash'); toForm(() => $('#flash').focus({preventScroll:true})); };
 function prefill(text){ const idea = $('#idea'); idea.value = text + idea.value.replace(/^בהשראת עבודה מס׳ \d+ מהאתר: /, ''); renderTicket(); }
 
@@ -1000,7 +1014,7 @@ $('#lbStage').addEventListener('pointerdown', e => lx = e.clientX);
 $('#lbStage').addEventListener('pointerup', e => { if(lx === null) return; const dx = e.clientX - lx; lx = null; if(Math.abs(dx) > 50 && lbList.length > 1) lbStep(dx > 0 ? 1 : -1); });
 $('#lbBook').onclick = () => { $('#lb').hidden = true; document.body.style.overflow = '';
   if(lbKind === 'flash'){ setMode('flash'); const f = $('#flash'); f.value = `מדף פלאשים מס׳ ${lbI+1}: `; renderTicket(); toForm(() => { f.focus({preventScroll:true}); f.setSelectionRange(f.value.length, f.value.length); }); return; }
-  setMode('idea'); prefill(inspired(lbI)); location.hash = '#talk'; };
+  setMode('idea'); prefill(inspired(lbI)); go('talk'); };
 /* ---------- flashes (sheets Adi sent) ---------- */
 const FLASHES = [1,2,3,4,5,6,7,8,9,10,11,12,13].map(k => { const n = String(k).padStart(2,'0'); return {src:`img/f/f${n}.jpg`, th:`img/f/t${n}.jpg`}; })
   .map((f, i) => ({...f, alt:`פלאשים זמינים לקעקוע, דף מס׳ ${i+1}`}));
@@ -1181,7 +1195,7 @@ function resetTalk(){
 })();
 
 /* ---------- boot ---------- */
-if(['#book','#admin'].includes(location.hash)) history.replaceState(null, '', '#' + cur());
+if(location.hash && (fromHash() || ['#book','#admin'].includes(location.hash))) history.replaceState(null, '', pathOf(cur()));
 setMode('idea'); show(cur(), true);
 })();
 </script>

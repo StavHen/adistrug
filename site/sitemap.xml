@@ -4,6 +4,10 @@
     <loc>https://adistrug.co.il/</loc>
     <lastmod>2026-11-24</lastmod>
     <image:image><image:loc>https://adistrug.co.il/img/adi-4.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/work</loc>
+    <lastmod>2026-11-24</lastmod>
     <image:image><image:loc>https://adistrug.co.il/img/082.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/081.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/080.jpg</image:loc></image:image>
@@ -44,6 +48,10 @@
     <image:image><image:loc>https://adistrug.co.il/img/035.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/047.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/040.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/flashes</loc>
+    <lastmod>2026-11-24</lastmod>
     <image:image><image:loc>https://adistrug.co.il/img/f/f01.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/f/f02.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/f/f03.jpg</image:loc></image:image>
@@ -57,5 +65,29 @@
     <image:image><image:loc>https://adistrug.co.il/img/f/f11.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/f/f12.jpg</image:loc></image:image>
     <image:image><image:loc>https://adistrug.co.il/img/f/f13.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/reviews</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/talk</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/studio</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/privacy</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/terms</loc>
+    <lastmod>2026-11-24</lastmod>
+  </url>
+  <url>
+    <loc>https://adistrug.co.il/accessibility</loc>
+    <lastmod>2026-11-24</lastmod>
   </url>
 </urlset>
