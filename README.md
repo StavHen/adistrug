@@ -2,7 +2,7 @@
 
 Live: https://adistrug.netlify.app
 
-- `site/` is exactly what gets published (index.html + img/). Edit `site/index.html` directly.
+- `site/` is exactly what gets published (index.html + img/). Edit `site/index.html` directly, then run `python3 tools/build_pages.py`: it makes `site/work.html`, `site/flashes.html`, etc. (one real address per section, so Google indexes each page) and rewrites `site/sitemap.xml`. Never edit those generated pages by hand.
 - `netlify.toml` tells Netlify to publish only `site/`. Files outside it (like this README) are not public.
 
 ## How changes go live
